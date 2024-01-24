@@ -1,0 +1,256 @@
+﻿<div ng-controller="registerController">
+    <style type="text/css">
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 350px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+
+    <section class="inner_bnr">
+        <div class="container">
+            <div class="inner_bnr_hd">
+                <!--<h4>Submit Listing</h4>-->
+            </div>
+        </div>
+    </section>
+
+    <section class="submit-listing">
+        <div class="container">
+            <form ng-submit="submit()" name="userForm" autocomplete="off">
+                <div class="banner_shadow">
+                    <div class="side_hd">
+                        <h3><span class="green">Register</span>  With Us</h3>
+                        <hr class="sec_under_line">
+                        <p>Fields marked (*) are mandatory</p>
+                    </div>
+
+                    <div class="listing_form">
+                        <div class="row">
+
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Business Name<span>*</span></label>
+                                <input type="text" name="businessName" placeholder="Business Name" id="businessName" ng-model="formData.businessName" auto-focus required>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Listing Category / Type of Business<span>*</span></label>
+                                <select name="cats" id="city" ng-model="formData.businessType" ng-options="ug.text for ug in businessTypeList" required>
+                                    <option value="">-- Select a business type --</option>
+                                </select>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Listing Title<span>*</span></label>
+                                <input type="text" name="text" placeholder="This is description for title field" class="list-img norepeat" id="listingTitle" ng-model="formData.listingTitle" required>
+                                <!--<span class="nxt-line">This is description for title field</span>-->
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Website</label>
+                                <input type="text" name="text" placeholder="Website" class="list-img norepeat" id="website" ng-model="formData.website">
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12">
+                                <label>Description</label>
+                                <textarea id="ckplot" ng-model="formData.description"></textarea>
+                            </div>
+
+                            <!--<div class="col-xs-12 col-sm-12">
+                                <label>Header Images</label>
+                                <div class="upload_image">
+
+                                    <div class="drag-image">
+                                        <img src="assets/images/upload.png" alt="upload">
+                                        <p>Click here to upload</p>
+                                    </div>
+                                    <div class="image-div">
+                                        <div class="image-upload">
+                                            <div class="flex-data"><img src="assets/images/fif_img.png" alt="img"></div>
+                                            <div class="delete-icon">
+                                                <i class="fa fa-trash"></i>
+                                            </div>
+                                        </div>
+                                        <div class="image-upload">
+                                            <div class="flex-data"><img src="assets/images/fif-img1.png" alt="img"></div>
+                                            <div class="delete-icon">
+                                                <i class="fa fa-trash"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>-->
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>First Name<span>*</span></label>
+                                <input type="text" name="firstname" placeholder="First Name" id="firstName" ng-model="formData.firstName" required>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Last Name<span>*</span></label>
+                                <input type="text" name="lastName" placeholder="Last Name" id="lastName" ng-model="formData.lastName" required>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Phone No<span>*</span></label>
+                                <input type="text" name="phone" maxlength="10" minlength="10" number-field placeholder="Phone No" id="phoneNumber" ng-model="formData.phoneNumber" required>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Email Address<span>*</span></label>
+                                <input type="email" name="mail" placeholder="Email ID" id="email" ng-model="formData.email" required>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Country<span>*</span></label>
+                                <select name="cats" id="city" ng-model="formData.country" ng-options="ug.text for ug in countryList" required>
+                                    <option value="">-- Select a country --</option>
+                                </select>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Zip Code<span>*</span></label>
+                                <input type="text" name="town" number-field placeholder="Zipcode" id="town" ng-model="formData.pincode" required>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>State<span>*</span></label>
+                                <select ng-change="onStateClick()" name="cats" id="city" ng-model="formData.state"
+                                        ng-options="ug.text for ug in stateList | filter : { parent : formData.country.id } : true" required>
+                                    <option value="">-- Select a state --</option>
+                                </select>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>City<span>*</span></label>
+                                <select ng-change="onCityClick()" name="cats" id="city" ng-model="formData.city"
+                                        ng-options="ug.text for ug in cityList | filter : { parent : formData.state.id } : true" required>
+                                    <option value="">-- Select a city --</option>
+                                </select>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 input-group">
+                                <label>Address<span>*</span></label>
+                                <input type="hidden" id="lat">
+                                <input type="hidden" id="lng">
+                                <input type="text" name="address1" id="select-ml" placeholder="Address" ng-model="formData.address1" required autocomplete="off">
+                                <!--<span class="input-group-btn">
+                                    <button title="Select Address On Map" class="btn btn-success add-btn" type="button" data-toggle="modal" data-target="#addNewAddress" ng-disabled="!formData.address1"><i class="fa fa-plus" style="margin-right: 5px;"></i>Select On Map</button>
+                                </span>-->
+                            </div>
+
+                            <!--<div class="col-xs-12 col-sm-12">
+                                <label>Address 2</label>
+                                <input type="text" name="address2" placeholder="Address2" id="address2" ng-model="formData.address2">
+                            </div>-->
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Password<span>*</span></label>
+                                <input type="password" name="password" placeholder="Password" id="password" ng-model="formData.password" required>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Confirm Password<span>*</span></label>
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password" id="confirmPassword" ng-model="formData.confirmPassword" required>
+                                <div ng-show="formData.password != formData.confirmPassword && userForm.confirmPassword.$dirty" style="color:red">Password does not match.</div>
+                            </div>
+
+                            <!--<div class="col-xs-12 col-sm-8">
+                                <label>Working Hours</label>
+                                <div class="working-hours">
+                                    <ul class="tabs-menu"><li class="tab-menu-Monday active-day"><span>Monday</span></li><li class="tab-menu-Tuesday"><span>Tuesday</span></li><li class="tab-menu-Wednesday active"><span>Wednesday</span></li><li class="tab-menu-Thursday"><span>Thursday</span></li><li class="tab-menu-Friday"><span>Friday</span></li><li class="tab-menu-Saturday"><span>Saturday</span></li><li class="tab-menu-Sunday"><span>Sunday</span></li></ul>
+                                    <div class="working-checkbox">
+
+
+                                        <p>
+                                            <input type="radio" id="test1" name="radio-group" checked>
+                                            <label for="test1">Enter Hours</label>
+                                        </p>
+                                        <p>
+                                            <input type="radio" id="test2" name="radio-group">
+                                            <label for="test2">Open all day</label>
+                                        </p>
+                                        <p>
+                                            <input type="radio" id="test3" name="radio-group">
+                                            <label for="test3">Close all day</label>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="add_morehour">
+                                    <div class="more-hour">
+                                        <select><option>00:00</option><option>01:30</option></select>
+                                        <select><option>00:00</option><option>00:30</option></select>
+                                        <button class="btn rmfield" type="button"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                    <div class="more-hour">
+                                        <select><option>00:00</option><option>01:30</option></select>
+                                        <select><option>00:00</option><option>00:30</option></select>
+                                        <button class="btn rmfield" type="button"><i class="fa fa-trash"></i></button>
+                                    </div>
+
+                                </div>
+
+                                <div class="add-hour">
+                                    <button class="add-bt">   Add Hour</button>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-4">
+                                <label>Timezone</label>
+                                <select>
+                                    <option>(UTC-11:00) Pacific/Pago_Pago</option>
+                                    <option>(UTC-11:00) Pacific/Niue</option>
+                                    <option>(UTC-11:00) Pacific/Midway</option>
+                                </select>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 top-add">
+                                <label>Your Products</label>
+                                <div class="add_room add-hour">
+                                    <button class="add-bt"> <i class="fa fa-plus" aria-hidden="true"></i> Add Room</button>
+                                </div>
+                            </div>-->
+                        </div> <!-- row -->
+                    </div>
+                </div>
+
+                <div class=" submit-changes">
+                    <button id="createbtn" type="submit" name="button" class="ladda-button" data-style="expand-right"><i class="fa fa-share" aria-hidden="true"></i><span class="ladda-label">Register</span></button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <div class="modal fade" id="addNewAddress" style="margin-top:80px;" tabindex="-1" role="dialog" aria-labelledby="addNew">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" name="myForm" ng-submit="onAddAddress()">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Select Address On Map<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--The div element for the map -->
+                        <div id="map"></div>
+
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button id="cancelAddNewAddress" type="button" class="btn btn-success" data-dismiss="modal">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).on("keydown", "form", function (event) {
+            return event.key != "Enter";
+        });
+    </script>
+
+</div>

@@ -1,0 +1,378 @@
+﻿<section class="inner_bnr">
+    <div class="container">
+        <div class="inner_bnr_hd">
+            <h4>{{editFormData.name}}</h4>
+        </div>
+    </div>
+</section>
+
+<section class="product_details">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 product_left">
+                <div class="product_image">
+                    <a href="{{editFormData.imageName}}" target="_blank" style="background-image: url('{{ editFormData.imageName ? editFormData.imageName : 'assets/images/no_img.png' }}');"> </a>
+                    <div class="sale-icon" ng-class="{'red' : !editFormData.isAvailable }">
+                        <p><img src="assets/images/sale.png" alt="img">{{editFormData.isAvailable ? 'In Stock': 'Out Of Stock'}}</p>
+                    </div>
+
+                    <div class="und_img_slid" ng-if="productImages.length > 0">
+                        <div class="owl-carousel owl-theme" id="prod_sub_slid">
+                            <div class="item" ng-repeat="item in productImages">
+                                <div class="sml_slid_set" style="background-image: url('{{ item.fileName ? item.fileName : 'assets/images/no_img.png' }}')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-content">
+                    <h2>{{editFormData.name}}</h2>
+                    <div class="price-value"> <!--<del>${{editFormData.sellinPrice}}</del>--> <span>${{editFormData.price}}</span> </div>
+                    <div class="price-content">
+                        <p>
+                            {{editFormData.shortDescription}}
+                        </p>
+                        <div class="category-product">
+                            <span>Category:</span> <p>{{editFormData.category.name}}</p>
+                        </div>
+                    </div>
+                    <div class="star_set_ser_de">
+                        <ul>
+                            <li>
+                                <div class="star_reviewln">
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate1" value="5" ng-checked="productReviewCount.averageCount == 5" disabled />
+                                        <label for="star5" title="{{productReviewCount.averageCount}}">5 stars</label>
+                                        <input type="radio" id="star4" name="rate1" value="4" ng-checked="productReviewCount.averageCount == 4" disabled />
+                                        <label for="star4" title="{{productReviewCount.averageCount}}">4 stars</label>
+                                        <input type="radio" id="star3" name="rate1" value="3" ng-checked="productReviewCount.averageCount == 3" disabled />
+                                        <label for="star3" title="{{productReviewCount.averageCount}}">3 stars</label>
+                                        <input type="radio" id="star2" name="rate1" value="2" ng-checked="productReviewCount.averageCount == 2" disabled />
+                                        <label for="star2" title="{{productReviewCount.averageCount}}">2 stars</label>
+                                        <input type="radio" id="star1" name="rate1" value="1" ng-checked="productReviewCount.averageCount == 1" disabled />
+                                        <label for="star1" title="{{productReviewCount.averageCount}}">1 star</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>{{productReviewCount.averageCount}}<span>({{productReviewCount.totalCount}} Review)</span></li>
+                            <li><a href data-toggle="modal" data-target="#editReviewBox">Write Review</a></li>
+                        </ul>
+                    </div>
+                    <div class="send-enquiry">
+                        <a href data-toggle="modal" data-target="#editBox" ng-click="onSendEnquiryClick()"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send an Enquiry</a>
+                    </div>
+                </div>
+
+                <div class="product-tabs">
+                    <ul class="nav">
+                        <li class="active"><a data-toggle="tab" href="#descriptions" target="_self">Descriptions</a></li>
+                        <li><a data-toggle="tab" href="#reviews" target="_self">Reviews ({{productReviewCount.totalCount}}) </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="descriptions" class="tab-pane fade  in active ">
+                            <h3>Product Description</h3>
+                            <p>
+                                {{editFormData.details}}
+                            </p>
+                        </div>
+
+                        <div id="reviews" class="tab-pane fade">
+                            <h3>Reviews</h3>
+                            <ul class="review-list">
+                                <li class="review-lines" ng-repeat="item in productReviewList | limitTo : 3">
+                                    <div class="flex-review">
+                                        <div class="name-left">
+                                            <h3>{{item.name}}</h3>
+                                            <div class="rate star_rate_cal" id="review">
+                                                <input type="radio" id="star5" name="rate {{$index}}" value="5" ng-checked="item.review == 5" disabled />
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rate {{$index}}" value="4" ng-checked="item.review == 4" disabled />
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rate {{$index}}" value="3" ng-checked="item.review == 3" disabled />
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rate {{$index}}" value="2" ng-checked="item.review == 2" disabled />
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rate {{$index}}" value="1" ng-checked="item.review == 1" disabled />
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                            <span>{{item.review}}</span>
+                                        </div>
+                                        <div class="review-date"> <span>{{item.createdDate | date : 'dd MMM yyyy'}}</span> </div>
+                                    </div>
+                                    <div class="review-content">
+                                        <p>{{item.description}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="review-overall" ng-if="totalCount > 3" ng-click="viewAllReviews()"><a href>View all {{totalCount}} Reviews</a></div>
+                        </div>
+                    </div> <!-- tab -->
+                </div>
+
+
+                <div class="related-prodcuts" ng-if="productList.length > 0">
+                    <div class="side_hd">
+                        <h3>Related <span class="green">Products</span></h3>
+                        <hr class="sec_under_line">
+                    </div>
+                    <div class="row">
+                        <div class="owl-carousel owl-theme" id="rela_prod_slid">
+                            <div class="item" ng-repeat="item in productList">
+                                <div class="list_grid rel">
+                                    <div class="list_img" style=" background-image: url('{{ item.imageName ? item.imageName : 'assets/images/no_img.png' }}')"></div>
+                                    <div class="list_cont">
+                                        <p class="list_heart"><img src="assets/images/fif_heart.png"> 05</p>
+                                        <h3>{{item.name}}</h3>
+                                        <p>{{item.shortDescription}}	</p>
+                                        <span class="list_p">NOT REVIEW YET</span>
+                                    </div>
+                                    <div class="list_btn">
+                                        <div class="mark_icon">
+                                            <a href="#"><img src="assets/images/fif_mark.png"></a>
+                                        </div>
+                                        <div class="lit_btn_src" ng-click="onProductClick(item)">
+                                            <a href>Read More</a>
+                                        </div>
+                                        <div class="mark_icon">
+                                            <a href="#"><img src="assets/images/fif_eye.png">10</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- related-prodcuts -->
+            </div> <!-- product_left -->
+
+            <div class="col-xs-12 col-sm-4 product_right">
+                <div class="search-proudct">
+                    <form>
+                        <div class="search-prtitle"> Search Products</div>
+                        <div class="search-input">
+                            <input type="text" name="search" placeholder="Search Products...">
+                            <button type="submit" name="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="det_sidebar1 review-summary">
+                    <div class="hd_serdet">
+                        <h4>REVIEW SUMMARY</h4>
+                    </div>
+                    <div class="star_sidebar">
+                        <div class="star_set_ser_de">
+                            <ul>
+                                <li>
+                                    <div class="star_reviewln">
+                                        <div class="rate">
+                                            <input type="radio" id="star5" name="rate" value="5" ng-checked="productReviewCount.averageCount == 5" disabled />
+                                            <label for="star5" title="{{productReviewCount.averageCount}}">5 stars</label>
+                                            <input type="radio" id="star4" name="rate" value="4" ng-checked="productReviewCount.averageCount == 4" disabled />
+                                            <label for="star4" title="{{productReviewCount.averageCount}}">4 stars</label>
+                                            <input type="radio" id="star3" name="rate" value="3" ng-checked="productReviewCount.averageCount == 3" disabled />
+                                            <label for="star3" title="{{productReviewCount.averageCount}}">3 stars</label>
+                                            <input type="radio" id="star2" name="rate" value="2" ng-checked="productReviewCount.averageCount == 2" disabled />
+                                            <label for="star2" title="{{productReviewCount.averageCount}}">2 stars</label>
+                                            <input type="radio" id="star1" name="rate" value="1" ng-checked="productReviewCount.averageCount == 1" disabled />
+                                            <label for="star1" title="{{productReviewCount.averageCount}}">1 star</label>
+                                        </div>
+                                    </div>
+
+                                <li>
+                                    {{productReviewCount.averageCount}}
+                                    (<span>{{productReviewCount.totalCount}} Reviews</span>)
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="single_star">
+                        <p>5 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': productReviewCount.fiveStarPer + '%'}"></span>{{productReviewCount.fiveStar}}</p>
+                        <p>4 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': productReviewCount.fourStarPer + '%'}"></span>{{productReviewCount.fourStar}}</p>
+                        <p>3 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': productReviewCount.threeStarPer + '%'}"></span>{{productReviewCount.threeStar}}</p>
+                        <p>2 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': productReviewCount.twoStarPer + '%'}"></span>{{productReviewCount.twoStar}}</p>
+                        <p>1 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': productReviewCount.oneStarPer + '%'}"></span>{{productReviewCount.oneStar}}</p>
+                    </div>
+                    <div class="summary_btn">
+                        <a href ng-click="viewAllReviews()" class="outline_dn_hover">Read Reviews</a>
+                        <a href data-toggle="modal" data-target="#editReviewBox" class="outline_hover">Write a Review</a>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <div class="search-title">
+                        <h2>Product Categories</h2>
+                    </div>
+                    <div class="search-lists">
+                        <ul class="order-list">
+                            <li ng-repeat="item in categoryList"><a href> {{item.name}} ({{$index + 1}}) </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<div class="search-box">
+                    <div class="search-title">
+                        <h2>Product Tags</h2>
+                    </div>
+                    <div class="search-lists ">
+                        <div class="list-select">
+                            <a href="#">Lorum Ipsum</a>  <a href="#">Lorum Is</a>
+                            <a href="#"> Lorum Ipsum Text For All</a>
+                            <a href="#">Lorum</a>  <a href="#">Lorum Ipsum All</a>
+                        </div>
+                    </div>
+                </div>-->
+            </div> <!-- col-4 -->
+        </div>
+    </div>
+</section>
+
+<div class="modal fade modalscrolldesign" style="margin-top:100px;" id="editBox" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title mt-0" id="exampleModalScrollableTitle">
+                    <span>Send enquiry about {{editFormData.name}}</span>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="needs-validation" name="enquiryform" ng-submit="onSubmitClick()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Name<span class="color-red">*</span></label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model="formData.name" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email">Email<span class="color-red">*</span></label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email" ng-model="formData.email" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="phoneNumber">Contact No<span class="color-red">*</span></label>
+                                <input type="text" minlength="10" maxlength="10" number-field class="form-control" id="contactNumber" placeholder="Enter your contact no" ng-model="formData.phoneNumber">
+                            </div>
+                        </div>
+                        <div class="col-md-12" ng-if="!isUserAuthenticated">
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="password">Password<span class="color-red">*</span></label>
+                                <input type="password" number-field class="form-control" id="password" placeholder="Enter your password" ng-model="formData.password" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label for="confirmpassword">Confirm Password<span class="color-red">*</span></label>
+                                <input type="password" number-field class="form-control" name="cpassword" id="cpassword" placeholder="Re-enter your password" ng-model="formData.confirmPassword" required>
+                                <div ng-show="formData.password != formData.confirmPassword && enquiryform.cpassword.$dirty" style="color:red">Password does not match.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="phoneNumber">Message<span class="color-red">*</span></label>
+                                <textarea aria-multiline="true" class="form-control" id="message" placeholder="Enter your message" ng-model="formData.message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelEditBox" type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                    <button id="enqrybtn" type="submit" class="btn btn-primary waves-effect waves-light ladda-button" data-style="expand-right"><span class="ladda-label">{{isUserAuthenticated ? 'Send Enquiry' : 'Register & Send Enquiry'}}</span></button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade modalscrolldesign" id="editReviewBox" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title mt-0" id="exampleModalScrollableTitle">
+                    <span>Write a review for {{editFormData.name}}</span>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="needs-validation" ng-submit="onReviewSubmitClick()" ng-if="isUserAuthenticated">
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <!--<label for="review">Review title<span class="color-red">*</span></label>-->
+                                <div class="rate star_rate_cal" id="review">
+                                    <input type="radio" id="star5" name="rate" value="5" ng-model="formData.review" ng-checked="formData.review == 5" />
+                                    <label for="star5" title="text" ng-click="onRatingClick(5)">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" ng-model="formData.review" ng-checked="formData.review == 4" />
+                                    <label for="star4" title="text" ng-click="onRatingClick(4)">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" ng-model="formData.review" ng-checked="formData.review == 3" />
+                                    <label for="star3" title="text" ng-click="onRatingClick(3)">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" ng-model="formData.review" ng-checked="formData.review == 2" />
+                                    <label for="star2" title="text" ng-click="onRatingClick(2)">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" ng-model="formData.review" ng-checked="formData.review == 1" />
+                                    <label for="star1" title="text" ng-click="onRatingClick(1)">1 star</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <span class="small" style="color:red" ng-if="isRatingZero">Please select a rating </span>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="validationCustom02">Your review</label>
+                                <textarea type="text" class="form-control" id="validationCustom02" placeholder="Description" ng-model="formData.description" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="title">Review title<span class="color-red">*</span></label>
+                                <input type="text" class="form-control" id="title" placeholder="Text" ng-model="formData.title" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name<span class="color-red">*</span></label>
+                                <input type="text" class="form-control" id="name" placeholder="Text" ng-model="formData.name" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group ml-10">
+                                <label for="email">Email<span class="color-red">*</span></label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="formData.email" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelEditBox" type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                    <button id="enqrybtn" type="submit" class="btn btn-primary waves-effect waves-light ladda-button" data-style="expand-right">
+                        <span class="ladda-label">Submit Review<i class="fa fa-paper-plane ml-6" aria-hidden="true"></i></span>
+                    </button>
+                </div>
+            </form>
+            <div ng-if="!isUserAuthenticated">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="write-review_design">
+                                <h4 class="mt-0"><span>To write a review for {{editFormData.name}}. Please login</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer  modal-border">
+                    <button id="cancelEditBox" type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                    <a href="/login" class="outline_hover green-bts">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

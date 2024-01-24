@@ -1,0 +1,11 @@
+﻿<div ng-controller="personaldetailsController">
+    <!--<span class="s_img" style="background-image: url('{{ editFormData.imageName }}')"></span>-->
+    <!--<img src="assets/images/profile_man.png" class="prof_man">-->
+    <img src="{{editFormData.imageName}}" class="prof_man">
+    <ul class="basic_details">
+        <li style="font-size: 16px;color: #000;font-weight: 500;">{{editFormData.firstName}} {{editFormData.lastName}}</li>
+        <li style="font-size: 13.5px;color: #777;font-weight: 400;"><!--{{editFormData.companyName}}--></li>
+        <li>{{editFormData.address}} {{editFormData.city.text}} {{editFormData.state.text}} - {{editFormData.country.text}}</li>
+        <!--<li style="color:#2e9a7e;">Last Verified : 20 Years 262 Days ago</li>-->
+    </ul>k
+</div>

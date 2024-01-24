@@ -1,0 +1,114 @@
+<section class="_desk_hdr">
+    <div class="container">
+        <div class="row hd">
+            <div class="col-sm-3 bf">
+                <div class="hd_logo">
+                    <a href="/"><img src="assets/images/hd_logo.png"></a>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="hd_menu">
+                    <ul class="hd_main_menu">
+                        <li><a href="/marketplace">MADE-IN-AFRICA</a></li>
+                        <li><a href="/advertisehere">ADVERTISE HERE</a></li>
+                        <li ng-if="!isUserAuthenticated"><a href="/register">ADD LISTING</a></li>
+                        <li><a href="/flight-search">FLIGHTS</a></li>
+                        <li class="dropdown" ng-if="isUserAuthenticated">
+                            <a href><img src="{{userData.image ? userData.image : 'assets/images/pro.png'}}"></a><!-- <profile-icon> -->
+                            <div class="active_drop_hd">
+                                <h4>Hello, {{userData.firstName}}</h4>
+                                <ul>
+                                    <li ng-click="onProfileClick()"><a href>Dashboard</a></li>
+                                    <li ng-click="onAddListingClick()"><a href>Add Listing</a></li>
+                                    <li ng-click="logOut()"><a href>Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hd_btn" ng-if="!isUserAuthenticated">
+                            <a href="/login"><img src="assets/images/login_arrow.png"> SIGN IN</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <MIBILE VIEW -->
+<section class="mobile_main">
+    <div class="container">
+        <div class="mob_top">
+            <button type="button" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="mobile">
+                <div class="mob_logo">
+                    <a href="/"><img src="assets/images/hd_logo.png"></a>
+                </div>
+                <div class="menus">
+                    <ul class="hd_main_menu">
+                        <li><a href="/marketplace">Made-In-Africa</a></li>
+                        <li><a href="/advertisehere">Advertise Here</a></li>
+                        <li ng-if="!isUserAuthenticated"><a href="/register">Add Listing</a></li>
+                        <!--<li><a href="#">Download App<img src="assets/images/menu_plus.png"></a></li>
+                        <li><a href="#">Job Posting<img src="assets/images/menu_plus.png"></a></li>-->
+                        <li class="hd_btn" ng-if="!isUserAuthenticated">
+                            <a href="/login"><img src="assets/images/login_arrow.png"> SIGN IN</a>
+                        </li>
+                        <li class="hd_btn" ng-click="logOut()" ng-if="isUserAuthenticated">
+                            <a href>LOGOUT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script type="text/javascript">
+    hide = true;
+    $('body').on("click", function () {
+        if (hide) $('.dropdown').removeClass('active');
+        hide = true;
+    });
+
+    // add and remove .active
+    $('body').on('click', '.dropdown', function () {
+
+        var self = $(this);
+
+        if (self.hasClass('active')) {
+            $('.dropdown').removeClass('active');
+            return false;
+        }
+
+        $('.dropdown').removeClass('active');
+
+        self.toggleClass('active');
+        hide = false;
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        //Navbar Toggle
+        $('.navbar-toggle').click(function () {
+            // alert('');
+            $(this).toggleClass('cross');
+            $('.menus').slideToggle(300);
+        });
+
+        $('.hover-menu span').click(function () {
+            $('.dropdown-toggle1').slideToggle(300);
+            $(this).parent().parent().toggleClass('add-active');
+        })
+
+
+
+    });
+</script>

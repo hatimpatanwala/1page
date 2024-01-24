@@ -1,0 +1,331 @@
+<style type="text/css">
+    /* Set the size of the div element that contains the map */
+    #map {
+        height: 350px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+    }
+</style>
+
+<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="hd_dash_sub">
+                    <h4>Listing Details</h4>
+
+                    <div class="add_room add-hour">
+                        <button type="button" class="add-bt" ng-click="onBack()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back To Listing</button>
+                    </div>
+                </div>
+
+                <form ng-submit="submit()" name="userForm" autocomplete="off">
+
+                    <div class="listing_form">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Business Name<span>*</span></label>
+                                <input type="text" name="businessName" placeholder="Business Name" id="businessName" ng-model="editFormData.businessName" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Listing Category / Type of Business<span>*</span></label>
+                                <select name="cats" id="city" ng-model="editFormData.businessType" ng-options="ug.text for ug in businessTypeList" required>
+                                    <option value="">-- Select a business type --</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Listing Title<span>*</span></label>
+                                <input type="text" name="text" placeholder="This is description for title field" class="list-img norepeat" id="listingTitle" ng-model="editFormData.listingTitle" required>
+                                <!--<span class="nxt-line">This is description for title field</span>-->
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Website</label>
+                                <input type="text" name="text" placeholder="Website" class="list-img norepeat" id="website" ng-model="editFormData.website">
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <label>Description</label>
+                                <textarea id="ckplot" ng-model="editFormData.description"></textarea>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Phone No<span>*</span></label>
+                                <input type="text" name="phone" maxlength="10" minlength="10" number-field placeholder="Phone No" id="phoneNumber" ng-model="editFormData.phoneNumber" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Email Address<span>*</span></label>
+                                <input type="email" name="mail" placeholder="Email ID" id="email" ng-model="editFormData.email" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Country<span>*</span></label>
+                                <select name="cats" id="city" ng-model="editFormData.country" ng-options="ug.text for ug in countryList" required>
+                                    <option value="">-- Select a country --</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Pincode<span>*</span></label>
+                                <input type="text" number-field name="town" placeholder="Pincode" id="town" ng-model="editFormData.pincode" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>State<span>*</span></label>
+                                <select ng-change="onStateClick()" name="cats" id="state" ng-model="editFormData.state" ng-options="ug.text for ug in stateList | filter : { parent : editFormData.country.id } : true" required>
+                                    <option value="">-- Select a state --</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>City<span>*</span></label>
+                                <select ng-change="onCityClick()" name="cats" id="city" ng-model="editFormData.city" ng-options="ug.text for ug in cityList | filter : { parent : editFormData.state.id } : true" required>
+                                    <option value="">-- Select a city --</option>
+                                </select>
+                                                            </div>
+                            <div class="col-xs-12 col-sm-12 input-group">
+                                <label>Address<span>*</span></label>
+                                <input type="hidden" id="lat">
+                                <input type="hidden" id="lng">
+                                <input type="text" name="address1" id="select-ml" placeholder="Address" required>
+                                <!--<span class="input-group-btn">
+                                    <button title="Select Address On Map" class="btn btn-success add-btn" type="button" data-toggle="modal" data-target="#addNewAddress"><i class="fa fa-plus" style="margin-right: 5px;"></i>Select On Map</button>
+                                </span>-->
+                            </div>
+
+                            <!--<div class="col-xs-12 col-sm-12">
+                                <label>Address 2</label>
+                                <input type="text" name="address2" placeholder="Address2" id="address2" ng-model="editFormData.address2">
+                            </div>-->
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-10">
+                            <label>Working Hours</label>
+                            <div class="working-hours">
+                                <ul class="tabs-menu">
+                                    <li class="tab-menu-Monday" ng-class="{'active-day' : editFormData.monday}" ng-model="editFormData.monday" ng-click="editFormData.monday = !editFormData.monday"><span>Monday</span></li>
+                                    <li class="tab-menu-Tuesday" ng-class="{'active-day' : editFormData.tuesday}" ng-model="editFormData.tuesday" ng-click="editFormData.tuesday = !editFormData.tuesday"><span>Tuesday</span></li>
+                                    <li class="tab-menu-Wednesday" ng-class="{'active-day' : editFormData.wednesday}" ng-model="editFormData.wednesday" ng-click="editFormData.wednesday = !editFormData.wednesday"><span>Wednesday</span></li>
+                                    <li class="tab-menu-Thursday" ng-class="{'active-day' : editFormData.thursday}" ng-model="editFormData.thursday" ng-click="editFormData.thursday = !editFormData.thursday"><span>Thursday</span></li>
+                                    <li class="tab-menu-Friday" ng-class="{'active-day' : editFormData.friday}" ng-model="editFormData.friday" ng-click="editFormData.friday = !editFormData.friday"><span>Friday</span></li>
+                                    <li class="tab-menu-Saturday" ng-class="{'active-day' : editFormData.saturday}" ng-model="editFormData.saturday" ng-click="editFormData.saturday = !editFormData.saturday"><span>Saturday</span></li>
+                                    <li class="tab-menu-Sunday" ng-class="{'active-day' : editFormData.sunday}" ng-model="editFormData.sunday" ng-click="editFormData.sunday = !editFormData.sunday"><span>Sunday</span></li>
+                                </ul>
+
+                                <div class="working-checkbox">
+                                    <p>
+                                        <input type="radio" id="test1" name="radio-group" value="1" ng-model="editFormData.hoursopt" ng-change="onHourOptChange()">
+                                        <label for="test1">Enter Hours</label>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="test2" name="radio-group" value="2" ng-model="editFormData.hoursopt">
+                                        <label for="test2">Open all day</label>
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="test3" name="radio-group" value="3" ng-model="editFormData.hoursopt">
+                                        <label for="test3">Close all day</label>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="add_morehour" ng-show="editFormData.hoursopt == 1">
+                                <div class="more-hour" ng-repeat="h in editFormData.hours">
+
+                                    <div class="col-xs-12 col-sm-5">
+                                        <input type="time" ng-model="h.fromDate" />
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-5">
+                                        <input type="time" ng-model="h.toDate" />
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-2">
+                                        <button class="btn rmfield" type="button" data-toggle="modal" data-target="#confirmDeleteHours" ng-click="onDeleteHour(h,$index)"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="add-hour" ng-show="editFormData.hoursopt == 1">
+                                <button type="button" class="add-bt" ng-click="onAddHour()">Add Hour</button>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-2">
+                            <label>Timezone<span>*</span></label>
+                            <select name="cats" id="city" ng-model="editFormData.timezone" ng-options="ug.text for ug in timezoneList" required>
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=" submit-changes">
+                        <button id="updatebtn" type="submit" name="button" class="ladda-button" data-style="expand-right"><i class="fa fa-share" aria-hidden="true"></i><span class="ladda-label">Save Changes</span></button>
+                    </div>
+                </form>
+
+                <div class="col-xs-12 col-sm-12 upload-newdesign1">
+                    <label class="label-font-size">Header Image</label>
+                    <div class="upload_image">
+                        <div class="col-xs-12 col-sm-12" ng-if="!editFormData.featuredImage">
+                            <form ng-submit="savePFI()" autocomplete="off">
+                                <input type="file" class="custom-file-input" name="file-upload" id="fileNamePFI" accept="image/*"
+                                       onchange="angular.element(this).scope().saveFilesReferencePFI(this.files)" required />
+                                <label class="custom-file-label" for="customFile">Choose an image file</label>
+                                <button id="changeImageBtn" class="btn rmfield ladda-button addgreenbt" type="submit" data-style="expand-right" title="Image"><i class="fa fa-upload"></i><span class="ladda-label">Uplaod</span></button>
+                                <button class="btn rmfield deletegreenbt" type="button" ng-click="clearPFI()"><i class="fa fa-eraser"></i>Clear</button>
+                            </form>
+                        </div>
+                        <div class="image-div" ng-if="editFormData.featuredImage">
+                            <div class="image-upload">
+                                <div class="flex-data">
+                                    <img src="{{editFormData.featuredImage}}" alt="img">
+                                </div>
+                                <div id="deleteFIbtn" class="delete-icon ladda-button" data-style="expand-right" ng-click="deleteFeaturedImage()">
+                                    <span class="ladda-label"><i class="fa fa-trash"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 upload-newdesign1">
+                    <label class="label-font-size">Listing Images</label>
+                    <div class="upload_image">
+                        <div class="col-xs-12 col-sm-12">
+                            <form ng-submit="savePI()" autocomplete="off">
+                                <input type="file" class="custom-file-input" name="file-upload" id="fileNamePI" accept="image/*" multiple
+                                       onchange="angular.element(this).scope().saveFilesReferencePI(this.files)" required />
+                                <label class="custom-file-label" for="customFile">Choose an image file</label>
+                                <button id="changeImageBtn1" class="addgreenbt btn rmfield ladda-button" type="submit" data-style="expand-right" title="Image"><i class="fa fa-upload"></i><span class="ladda-label">Uplaod</span></button>
+                                <button class="deletegreenbt btn rmfield" type="button" ng-click="clearPI()"><i class="fa fa-eraser"></i>Clear</button>
+                            </form>
+                        </div>
+
+                        <div class="image-div" ng-if="serviceImages.length > 0">
+                            <div class="image-upload" ng-repeat="item in serviceImages">
+                                <div class="flex-data">
+                                    <img src="{{item.fileName}}" height="200" width="200" />
+                                </div>
+                                <div class="text-center">
+                                    <i class="btn btn-link fa fa-arrow-down color-danger" title="Make Active" ng-if="!item.isActive" ng-click="updatePI(item,true)"></i>
+                                    <i class="btn btn-link fa fa-arrow-up color-success" title="Make Inactive" ng-if="item.isActive" ng-click="updatePI(item,false)"></i>
+                                    <i class="btn btn-link fa fa-trash color-black" data-toggle="modal" data-target="#confirmDeleteImage" ng-click="onImageDelete(item,$index)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="add_prod_table">
+                    <div class="col-xs-12 col-sm-12 top-add line-one1">
+                        <label>Your Products</label>
+                        <div class="add_room add-hour">
+                            <button type="button" class="add-bt" ng-click="new()"> <i class="fa fa-plus" aria-hidden="true"></i> Add Product</button>
+                        </div>
+                    </div>
+                    <div class="dum_class">
+                        <!--<div class="hd_ad_rtab">
+                            <h4>Add Products</h4>
+                        </div>-->
+                        <div class="tbl_add_prod">
+                            <table class="add_prod">
+                                <tr>
+                                    <!--<th>PRODUCT</th>-->
+                                    <th>NAME</th>
+                                    <th>CATEGORY</th>
+                                    <!--<th>RATING</th>-->
+                                    <th>STATUS</th>
+                                    <th>PRICE</th>
+                                    <th>SELLING PRICE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                                <tr ng-repeat="item in recordList">
+                                    <!--<td class="add_pdr_img"><img src="assets/images/market_3.png"></td>-->
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.category.name}}</td>
+                                    <!--<td><img src="assets/images/mar_rate_star.png"> (5 Star)</td>-->
+                                    <td ng-class="{'stk' : item.isAvailable,'outstk' : !item.isAvailable }"><p>{{item.isAvailable ? 'In Stock' : 'Out Of Stock'}}</p></td>
+                                    <td>${{item.price}}</td>
+                                    <td>${{item.sellingPrice}}</td>
+                                    <td class="edit"><a href ng-click="editProduct(item)"><img src="assets/images/edit_icon.png"></a></td>
+                                </tr>
+                            </table>
+                            <div class="col-xs-12 col-sm-12 top-add" ng-if="recordList.length == 0">
+                                <label>No product found! Start adding.</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).on("keydown", "form", function (event) {
+        return event.key != "Enter";
+    });
+</script>
+
+
+<div class="modal fade" id="confirmDeleteImage" style="margin-top:100px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete image ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">No</button>
+                <button id="deletePIbtn" type="button" ng-click="removePI(selectedImage)" class="btn btn-primary waves-effect waves-light ladda-button" data-style="expand-right"><span class="ladda-label">Yes</span></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="addNewAddress" style="margin-top:80px;" tabindex="-1" role="dialog" aria-labelledby="addNew">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" name="myForm" ng-submit="onAddAddress()">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Select Address On Map<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></h4>
+                </div>
+                <div class="modal-body">
+                    <!--The div element for the map -->
+                    <div id="map"></div>
+
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button id="cancelAddNewAddress" type="button" class="btn btn-success" data-dismiss="modal">Select</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmDeleteHours" style="margin-top:100px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">No</button>
+                <button id="deleteHoursbtn" type="button" ng-click="deleteTiming()" class="btn btn-primary waves-effect waves-light ladda-button" data-style="expand-right"><span class="ladda-label">Yes</span></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

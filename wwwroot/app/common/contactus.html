@@ -1,0 +1,66 @@
+﻿<section class="inner_bnr" style="background-image: url('/assets/images/contact_us_bnr.jpg')">
+    <div class="container">
+        <div class="inner_bnr_hd">
+            <!--<h4>Help / Support</h4>-->
+        </div>
+    </div>
+</section>
+
+<section class="submit-listing advertise_page" ng-controller="contactusController">
+    <div class="container">
+        <div class="banner_shadow">
+            <div class=" contactus">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5 contactus-left">
+                        <h3>Our Location</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.598595487495!2d7.4960513140938945!3d6.445554325854453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a3dc7c98c86d%3A0x857d666200dc92e3!2s71%20Ogui%20Rd%2C%20Achara%2C%20Enugu%2C%20Nigeria!5e0!3m2!1sen!2sin!4v1576495961813!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+                    </div> <!-- col-6 -->
+
+                    <div class="col-xs-12 col-sm-7 contactus-right listing_form">
+                        <div class="side_hd">
+                            <h3><span class="green">Get In </span>Touch</h3>
+                            <hr class="sec_under_line">
+                            <p>Complete this Enquiry Form to obtain additional information about our services or send personal complaints. We will analyze your enquiry and return to you shortly by email or phone. Reach us at <a href="support@1pageonline.com">support@1pageonline.com</a></p>
+                        </div>
+                        <div class="row">
+                            <form ng-submit="submit()" autocomplete="off">
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>First Name<span>*</span></label>
+                                    <input type="text" name="text" placeholder="Enter your first name*" ng-model="formData.firstName" auto-focus required>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Last Name<span>*</span></label>
+                                    <input type="text" name="text" placeholder="Enter your last name*" ng-model="formData.lastName" required>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Email<span>*</span></label>
+                                    <input type="email" name="text" placeholder="Enter your email*" ng-model="formData.email" required>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Contact Number<span>*</span></label>
+                                    <input type="text" name="number" maxlength="10" minlength="10" placeholder="Enter your contact number*" ng-model="formData.phoneNumber" number-field required>
+                                </div>
+                                <div class="col-xs-12 col-sm-12">
+                                    <label>Your Message<span>*</span></label>
+                                    <textarea name="except" cols="40" rows="3" ng-model="formData.message" placeholder="Enter your message*" required></textarea>
+                                </div>
+                                <!--<div class="label-check">
+                                    <label class="checsign">
+                                        <span>
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember">I Agree Terms Conditions
+                                        </span>
+
+                                    </label>
+                                </div>-->
+                                <div class="clearfix pad-left">
+                                    <button id="createbtn" type="submit" class="signupbtn ladda-button" data-style="expand-right" value="Submit"><span class="ladda-label">Submit</span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- banner -->
+    </div>
+</section>

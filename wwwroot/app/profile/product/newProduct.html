@@ -1,0 +1,101 @@
+﻿<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="hd_dash_sub">
+                    <h4>Add New Product</h4>
+                    <div class="add_room add-hour">
+                        <button type="button" class="add-bt" ng-click="onBackClick()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back To Listing</button>
+                    </div>
+                </div>
+
+                <form ng-submit="submit()" name="userForm" autocomplete="off">
+                    <div class="listing_form">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 web-title">
+                                <div class="flex">
+                                    <div class="busines-title">
+                                        <label>Business Name:</label>
+                                        <p>{{businessData.businessName}}</p>
+                                    </div>
+                                    <div class="busines-title">
+                                        <label>Business Type:</label>
+                                        <p>{{businessData.businessType.text}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>Name</label>
+                            <input type="text" name="text" ng-model="formData.name" placeholder="Name*" required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>Categories</label>
+                            <select id="city" ng-model="formData.category" ng-options="ug.name for ug in categoryList" required>
+                                <option value="">-- Select a category* --</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                            <label>Short Description</label>
+                            <textarea id="ckplot" ng-model="formData.shortDescription" placeholder="Short Description*" required></textarea>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                            <label>Description</label>
+                            <textarea id="ckplot" ng-model="formData.details" placeholder="Description"></textarea>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 upload_file">
+                            <label>Image</label>
+                            <input type="file" name="upload" id="customFile" accept="image/*"
+                                   onchange="angular.element(this).scope().saveFileImage(this.files)" required />
+                        </div>
+                        <!--<div class="col-xs-12 col-sm-12">
+                            <label>Header Images</label>
+                            <div class="upload_image">
+                                <div class="drag-image">
+                                    <img src="images/upload.png" alt="upload">
+                                    <p>Click here to upload</p>
+                                </div>
+                                <div class="image-div">
+                                    <div class="image-upload">
+                                        <div class="flex-data"><img src="images/fif_img.png" alt="img"></div>
+                                        <div class="delete-icon">
+                                            <i class="fa fa-trash"></i>
+                                        </div>
+                                    </div>
+                                    <div class="image-upload">
+                                        <div class="flex-data"><img src="images/fif-img1.png" alt="img"></div>
+                                        <div class="delete-icon">
+                                            <i class="fa fa-trash"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="col-xs-12 col-sm-6">
+                            <label>Regular Price</label>
+                            <input type="number" name="firstname" ng-model="formData.price" placeholder="Price*" required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>Sale Price</label>
+                            <input type="number" name="firstname" ng-model="formData.sellingPrice" placeholder="Selling Price*" required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>Is Available</label>
+                            <input type="checkbox" name="text" ng-model="formData.isAvailable">
+                        </div>
+                    </div>
+                    <div class=" submit-changes">
+                        <button id="createbtn" type="submit" name="button" class="ladda-button" data-style="expand-right"><i class="fa fa-plus" aria-hidden="true"></i><span class="ladda-label">Add Product</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,130 @@
+@media(max-width: 1000px) {
+    .navbar-toggle {
+        margin: 0;
+        margin-top: 4px;
+    }
+
+    .set_hd, .green_set {
+        display: none;
+    }
+
+    .navbar-toggle .icon-bar + .icon-bar {
+        margin-top: 5px;
+    }
+
+    .navbar-toggle .icon-bar {
+        width: 25px;
+        height: 3.8px;
+        border-radius: 0;
+        background-color: #000;
+    }
+
+    .cross span.icon-bar:first-child {
+        transform: rotate(45deg);
+        position: absolute;
+        top: 14.5px;
+    }
+
+    .cross span.icon-bar:nth-child(2) {
+        display: none;
+    }
+
+    .cross span.icon-bar:last-child {
+        transform: rotate(-45deg);
+    }
+
+    li.btn a {
+        background-color: #041436;
+        padding: 12px 25px;
+        border-radius: 47px;
+        color: #fff;
+        display: inline-block;
+    }
+
+    .menus {
+        position: absolute;
+        width: 100%;
+        background: #ffffff;
+        z-index: 999;
+        padding: 8px 15px 20px 8px;
+        right: 0;
+        top: 4.7pc;
+        margin-top: 0;
+        display: none;
+    }
+
+        .menus li {
+            display: block;
+            border: none;
+            text-align: center;
+            padding: 0;
+            padding: 11px 0px;
+            border-bottom: 1px solid #a1a1a1;
+        }
+
+            .menus li a {
+                padding: 7px;
+                color: #000;
+                margin: 10px 0;
+                display: block;
+                border-left: none;
+                border-bottom: none;
+            }
+
+        .menus ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .menus li .dropdown-toggle1 a {
+            color: #000;
+        }
+
+    li.btn a {
+        padding: 10px 30px;
+        text-align: center;
+        float: right;
+    }
+
+    .navbar-toggle {
+        display: block;
+        margin-top: 7px;
+        margin-right: 1px;
+    }
+
+    section.mobile_main {
+        background: #fff;
+        padding: 10px 0px;
+        position: fixed;
+        top: 0px;
+        z-index: 12;
+        left: 0px;
+        right: 0px;
+        filter: drop-shadow(1px 1px 4px #bdbdbd);
+    }
+
+    .mobile li {
+        display: block !important;
+        padding: 0px !important;
+    }
+
+        .mobile li a {
+            padding: 5px 0px !important;
+        }
+
+        .mobile li.hd_btn {
+            border: none !important;
+        }
+
+            .mobile li.hd_btn a {
+                padding: 14px 0px !important;
+            }
+}
+
+
+#contact_form .modal-form .modal-body .contact_form {
+    height: initial;
+    width: 100%;
+    padding: 15px;
+}
+}

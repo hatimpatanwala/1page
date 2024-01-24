@@ -1,0 +1,49 @@
+/*MOBILE FOODER*/
+
+section.mob_fd
+{
+	width: 100%;
+	position: fixed;
+	z-index: 5;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+.line_fd
+{
+	background-image: linear-gradient(#FF9364, #f3814f);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+a.sing_icon
+{
+	width: 20%;
+	text-align: center;
+}
+label.i_name
+{
+	display: block;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
+	margin-top: 8px;
+}
+.line_fd a.active {
+    background-color: #ce5d3c;
+    position: relative;
+    bottom: 0px;
+    top: 0px;
+}
+.line_fd a {
+    width: 20%;
+}
+.fd_icon {
+    text-align: center;
+    padding: 13px 0px 10px 0px;
+}
+
+
+/*MOBILE FOODER*/

@@ -1,0 +1,172 @@
+﻿<div ng-controller="flighSearchController">
+
+
+
+
+    <!--<div class="container">
+        <div class="sml_txt_sec"></div>
+    </div>
+
+    <section class="grid_dum">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="squ_dum"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="squ_dum"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="squ_dum"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="squ_dum"></div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!--<section class="dum_inr_bnr"></section>-->
+    <div class="fscontainer">
+       
+    </div>
+
+    <!--<section class="inner_bnr slide">-->
+       <!-- <div class="owl-carousel owl-theme" id="mrkt_plc">-->
+            <!--<div class="item" ng-repeat="item in pageBannerList">-->
+                <!--<div class="inner_bnr_marpla" style="background-image: url('{{item.image}}');">-->
+                    <!--<div class="container">-->
+                        <!--<div class="inner_bnr_hd">-->
+                            <!--<h4 ng-bind-html="item.details | safeHtml"></h4>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+
+    <section class="market_form">
+        <div class="container">
+            <form name="userForm" ng-submit="onSearchClick()">
+
+                <div class="main_market_form">
+                    <div class="market_set1">
+                        <div class="left_search">
+                            <!--<h4>Search Products</h4>-->
+
+                            <input type="text" placeholder="Search Products" name="search" ng-model="searchFormData.searchTerm">
+
+                        </div>
+                    </div>
+                    <div class="market_set2">
+                        <div class="inner_main_market">
+                            <!--<h4>Product Categories</h4>-->
+                            <select class="pro_cate" ng-model="searchFormData.category" ng-options="ug.name for ug in categoryList">
+                                <option value="">Select a category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="market_set2">
+                        <div class="inner_main_market">
+                            <!--<h4 class="dumy-height"> </h4>-->
+                            <div class="button-clear">
+
+                                <button type="submit" class="search-btn1">Search</button>
+                                <button type="button" class="clear-btn1" ng-click="onClearClick()">Clear</button>
+                            </div>
+                            <!-- <h4>Default Sorting</h4>
+                            <select class="pro_cate">
+                                <option>Newest First</option>
+                                <option>Popularity</option>
+                                <option>Price - Low to High</option>
+                                <option>Price - High to Low</option>
+                            </select> -->
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <section class="market_place_grid">
+        <div class="container">
+
+
+            <div class="showing-filters filter_text flex just-right">
+                <p>Showing All {{srchCount}} Results</p>
+                <div class="bnr_field default-dropdown">
+                    <select class="pro_cate" ng-model="searchFormData.sortBy" ng-options="s.text for s in sortByList" ng-change="onSortChange()">
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid_dum" style="padding-left:14px;">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="squ_dum"></div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="squ_dum"></div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="squ_dum"></div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="squ_dum"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row market_img">
+                <div class="col-sm-3" ng-repeat="item in recordList" style="margin-bottom:35px;">
+                    <div class="full_set_market_img">
+                        <div class="market_img_sec">
+                            <div class="img_src_mart" style="background-image: url('{{ item.imageName ? item.imageName : 'assets/images/no_img.png' }}')">
+                                <span class="sale_no" ng-class="{'red' : !item.isAvailable }">{{item.isAvailable ? 'In Stock': 'Out Of Stock'}}</span>
+                            </div>
+                        </div>
+                        <div class="market_grid_cont">
+                            <div class="grid_post_cont">
+                                <h3>{{item.name}}</h3>
+                                <!--<img src="assets/images/mar_rate_star.png">-->
+                                <div class="star_reviewln">
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate" value="5" />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rate" value="4" />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rate" value="3" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rate" value="2" />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rate" value="1" />
+                                        <label for="star1" title="text">1 star</label>
+                                    </div>
+                                </div>
+
+                                <a href ng-click="onProductClick(item)"><span class="plus_hover"><img src="assets/images/plus_market.png"></span></a>
+                                <div class="mart_rate_cross">
+                                    <!--<del>${{item.sellingPrice}}</del>--><p class="green_rate">${{item.price}}</p>
+                                </div>
+                            </div>
+                            <div class="grid_mart_btn">
+                                <a href ng-click="onProductClick(item)">- Read More -</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row blog-alert" ng-if="nomoreresult">
+                <span>{{ nomoreresult}}</span>
+            </div>
+
+            <div class="row  submit-changes button-rights">
+                <button type="button" class="clear-btn1" ng-click="onViewMoreResult()" ng-if="!nomoreresult">View More Result</button>
+            </div>
+
+        </div>
+    </section>
+</div>
+

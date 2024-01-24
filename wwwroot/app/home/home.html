@@ -1,0 +1,486 @@
+<div ng-controller="homeController">
+    <div>
+
+        <!--Do not remove. Header part skeleton-->
+        <!--<section class="hd_dummy">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="logo_dummy"></div>
+                    </div>
+                    <div class="col-sm-9">
+                        <ul class="dummy">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li style="margin-left: 30px;border-radius: 40px;"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+
+        <section class="bnr_main">
+
+            <div class="bnt_flex hidemobile">
+                <div class="bnr_form ">
+                    <div class="abs_bnr_form">
+                        <div class="hd_form">
+                            <h4>Looking for something ? Search here</h4>
+                        </div>
+                        <div class="bnr_field">
+                            <form name="userForm" ng-submit="onSearchClick()">
+                                <select id="businessType" class="selectpicker des" data-show-subtext="false" data-live-search="true" style="-webkit-appearance: none;"
+                                        ng-model="formData.businessType" ng-options="ug.text for ug in businessTypeList" required>
+                                    <option value="" disabled selected>Select a category</option>
+                                </select>
+                                <!--<select name="businessType" id="businessType" ng-model="formData.businessType" ng-options="ug.text for ug in businessTypeList" required>
+                                    <option value="">All categories</option>
+                                </select>-->
+                                <!--<input type="text" name="popularSearch" class="form_eye" placeholder="Business Type" ng-model="formData.popularSearch">-->
+                                <select name="country" id="country" ng-model="formData.country" ng-options="ug.text for ug in countryList" ng-change="onCountryChange()">
+                                    <option value="">Select a country</option>
+                                </select>
+                                <input type="text" ng-focus="geolocate()" id="location" name="location" class="form_loca" placeholder="Location">
+                                <!--<input type="text" name="name" class="form_eye" placeholder="Business Name" ng-model="formData.businessName">-->
+                                <div class="btn_form_hd">
+                                    <button id="searchbtn" type="submit" class="ladda-button" data-style="expand-right"><span class="ladda-label">SEARCH</span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="bnr_hd_txt">
+                    <!--<p ng-bind-html="item.details | safeHtml"></p>-->
+                    <h3 ng-bind-html="item.details | safeHtml"></h3>
+                    <!--<p>LORUM ISPUM IS SIMPLY DUMMY</p>
+                    <h3>Search Thousand of Qualified Service Providers in Africa</h3>-->
+                    <!--<div class="line_bnr">
+                        <hr class="bnr_hd_line">
+                    </div>
+                    <div class="bnr_btn">
+                        <a href="#"><img src="assets/images/menu_plus_white.png"> ADD LISTING</a>
+                    </div>-->
+                </div>
+            </div>
+
+            <section class="dum_bnr">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form_dum"></div>
+                        </div>
+                        <div class="col-sm-8">
+                            <!--<div class="bnr_txt_dum">
+                                <div class="big_trt"></div>
+                                <div class="sml_trt"></div>
+                                <div class="sml_trt" style="margin-top:14px;"></div>
+                                <div class="sml_trt" style="margin-top:14px;width: 50%;"></div>
+                                <div class="par_div">
+                                    <div class="btn_bnr_dum"></div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="owl-carousel owl-theme" id="main_bnr">
+                <div class="item" ng-repeat="item in pageBannerList">
+                    <!--assets/images/main_bnr1.jpg-->
+                    <div class="bnr_img" style="background-image: url('{{ item.image }}');">
+                        <div class="container">
+                            <div class="bnr_cont"></div>
+                        </div>
+                        <div class="bnr_fd_icon">
+                            <div class="container">
+                                <div class="social_list">
+                                    <ul>
+                                        <li><a href="https://www.youtube.com/channel/UCh79aGj360_2CCv0OtmM6ZA" target="_blank"><i class="fa fa-youtube-play"></i> - YouTube</a></li>
+                                        <li class="cent_icon"><a href="https://www.instagram.com/1pageonline/" target="_blank"><i class="fa fa-instagram"></i> - Instagram</a></li>
+                                        <li><a href="https://twitter.com/1pageonline" target="_blank"><i class="fa fa-twitter"></i> - Twitter</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bnr_form showmobile">
+                <div class="abs_bnr_form">
+                    <div class="hd_form">
+                        <h4>Looking for something ? Search here</h4>
+                    </div>
+                    <div class="bnr_field">
+                        <form name="userForm" ng-submit="onSearchClick()">
+                            <select id="businessType1" class="selectpicker des" data-show-subtext="false" data-live-search="true" style="-webkit-appearance: none;"
+                                    ng-model="formData.businessType" ng-options="ug.text for ug in businessTypeList" required>
+                                <option value="" disabled selected>Category</option>
+                            </select>
+                            <!--<select name="businessType" id="businessType" ng-model="formData.businessType" ng-options="ug.text for ug in businessTypeList" required>
+                                <option value="">All categories</option>
+                            </select>-->
+                            <select name="country" id="country" ng-model="formData.country" ng-options="ug.text for ug in countryList" ng-change="onCountryChange()">
+                                <option value="">Select a country</option>
+                            </select>
+                            <input type="text" ng-focus="geolocate()" id="location" name="location" class="form_loca" placeholder="Location">
+                            <!--<input type="text" name="name" class="form_eye" placeholder="Business Name" ng-model="formData.businessName">-->
+                            <div class="btn_form_hd">
+                                <button id="searchbtn" type="submit" class="ladda-button" data-style="expand-right"><span class="ladda-label">SEARCH</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sect_two">
+            <div class="container">
+                <div class="row east">
+                    <div class="col-sm-4">
+                        <div class="side_hd">
+                            <h3>1pageonline.com Easiest way to get local <span class="green">services in Africa</span></h3>
+                            <hr class="sec_under_line">
+                            <p class="hd_child">Explore the best trades and services in Africa</p>
+                        </div>
+                        <!-- <div class="sec_side_small_p">
+                            <p>1pageonline.com is free to register business directory and is designed to help local business succeed online and connect with many customers seeking their services. We stood for reputation, raising standards and enforcing quality trade and services across Africa. We remain the leaders when it comes to finding the right trades and other professional services.</p>
+                        </div>-->
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="serv_icon_set">
+                            <div class="sec_icon1">
+                                <img src="assets/images/ser-1.png">
+                                <div class="ser_cont">
+                                    <h4>Register & Download</h4>
+                                    <p>our app for your chance to win $20.00</p>
+                                </div>
+                            </div>
+                            <div class="sec_icon1">
+                                <img src="assets/images/ser-2.png">
+                                <div class="ser_cont">
+                                    <h4>Get Listed For FREE</h4>
+                                    <p>With the African leading online directory</p>
+                                </div>
+                            </div>
+                            <div class="sec_icon1">
+                                <img src="assets/images/ser-3.png">
+                                <div class="ser_cont">
+                                    <h4>Advertise Your Business</h4>
+                                    <p>On our front page (Premium advert only)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="sec_side_small_p">
+                            <p>1pageonline.com is free to register business directory and is designed to help local business succeed online and connect with many customers seeking their services. We stood for reputation, raising standards and enforcing quality trade and services across Africa. We remain the leaders when it comes to finding the right trades and other professional services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="third_sec" ng-if="homePageServiceListList.length > 0">
+            <div class="container">
+                <div class="row hd_split">
+                    <div class="col-sm-6">
+                        <div class="side_hd">
+                            <h3>Find Your <span class="green">Services</span></h3>
+                            <hr class="sec_under_line">
+                            <p class="hd_child">Explore some of the best businesses around africa</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!--<div class="third_hd_btn">
+                            <a href="#">VIEW MORE</a>
+                        </div>-->
+                    </div>
+                </div>
+
+                <!--<div class="ron_ser">
+                    <div class="owl-carousel owl-theme" id="service_home_slid">
+                        <div class="item" ng-repeat="item in homePageServiceListList">
+                            <div class="rond_icon1">
+                                <img src="{{item.imageName ? item.imageName : 'assets/images/ron-1.png'}}">
+                                <p class="num_ron">3+</p>
+                                <div class="ron_cont">
+                                    <h4>{{item.text}}</h4>
+                                    <p>{{item.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="row find-services-new">
+                    <div class="owl-carousel owl-theme" id="service_home_slid">
+
+                        <div class="col-xs-12 col-sm-3 service-hotel" ng-repeat="item in homePageServiceListList">
+                            <div class="inner-hotel">
+                                <a href ng-click="onPopularListing(item)">
+                                    <div class="find-hotelimg" style="background-image: url('{{ item.imageName ? item.imageName : 'assets/images/main_bnr1.jpg' }}');"></div>
+                                    <div class="find-description">
+                                        <h2>{{item.textTrim}}</h2>
+                                        <p>{{item.description}}</p>
+                                        <div class="location-count"> <span>{{$index + 1}}</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="four_bg" ng-if="popularServiceListList.length > 0">
+            <div class="container">
+                <div class="row hd_split">
+                    <div class="col-sm-6">
+                        <div class="side_hd">
+                            <h3 style="color: #fff;">Popular <span class="green">Listings</span></h3>
+                            <hr class="sec_under_line white">
+                        </div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+                <div class="fourth_slider">
+                    <input type="hidden" id="hdforbookmark" data-toggle="modal" data-target="#loginpopup" />
+                    <div class="owl-carousel owl-theme" id="place_slide">
+                        <div class="item" ng-repeat="item in popularServiceListList">
+                            <div class="list_grid">
+                                <div class="list_img" style="background-image: url('{{ item.featuredImage ? item.featuredImage : 'assets/images/fif-img1.png' }}');"></div>
+                                <div class="list_cont">
+                                    <p class="list_heart">
+                                        <img src="assets/images/fif_heart.png">{{item.totalBookMarkedCount}}
+                                    </p>
+                                    <h3>{{item.businessName}}</h3>
+                                    <p>{{item.listingTitle}}</p>
+                                    <div class="star_sidebar">
+                                        <div class="star_set_ser_de">
+                                            <ul>
+                                                <li>
+                                                    <div class="star_reviewln">
+                                                        <div class="rate">
+                                                            <input type="radio" id="star5" name="rate {{item.id}}" value="5" ng-checked="item.averageCount == 5" disabled />
+                                                            <label for="star5" title="{{item.averageCount}}">5 stars</label>
+                                                            <input type="radio" id="star4" name="rate {{item.id}}" value="4" ng-checked="item.averageCount == 4" disabled />
+                                                            <label for="star4" title="{{item.averageCount}}">4 stars</label>
+                                                            <input type="radio" id="star3" name="rate {{item.id}}" value="3" ng-checked="item.averageCount == 3" disabled />
+                                                            <label for="star3" title="{{item.averageCount}}">3 stars</label>
+                                                            <input type="radio" id="star2" name="raten {{item.id}}" value="2" ng-checked="item.averageCount == 2" disabled />
+                                                            <label for="star2" title="{{item.averageCount}}">2 stars</label>
+                                                            <input type="radio" id="star1" name="rate {{item.id}}" value="1" ng-checked="item.averageCount == 1" disabled />
+                                                            <label for="star1" title="{{item.averageCount}}">1 star</label>
+                                                        </div>
+                                                    </div>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list_btn">
+                                    <div class="mark_icon" ng-if="!item.isBookMarked">
+                                        <a href ng-click="onAddBookMarkClick(item)"><img src="assets/images/fif_mark.png"></a>
+                                    </div>
+                                    <div class="lit_btn_src" ng-click="onServiceClick(item)">
+                                        <a>View Details</a>
+                                    </div>
+                                    <div class="mark_icon">
+                                        <a href="#"><img src="assets/images/fif_eye.png">{{item.viewCount}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="third_sec" ng-if="popularProductListList.length > 0">
+            <div class="container">
+                <div class="row hd_split">
+                    <div class="col-sm-6">
+                        <div class="side_hd">
+                            <h3>Made In <span class="green">Africa</span></h3>
+                            <hr class="sec_under_line">
+                            <p class="hd_child">Explore some of the best products around africa</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+                <div class="row find-services-new">
+                    <div class="owl-carousel owl-theme" id="product_home_slid">
+                        <div class="col-xs-12 col-sm-3 service-hotel" ng-repeat="item in popularProductListList">
+                            <div class="inner-hotel">
+                                <a href ng-click="onProductClick(item)">
+                                    <div class="find-hotelimg" style="background-image: url('{{ item.imageName ? item.imageName : 'assets/images/main_bnr1.jpg' }}');"></div>
+                                    <div class="find-description">
+                                        <h2>{{item.name}}</h2>
+                                        <p>{{item.shortDescription}}</p>
+                                        <div class="location-count"> <span>{{$index + 1}}</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fifth_section" ng-if="homePageEventList.length > 0">
+            <div class="container">
+                <div class="row follow flex">
+                    <div class="col-sm-9">
+                        <div class="side_hd">
+                            <h3>Follow Our<span class="green"><br> Upcoming Events</span></h3>
+                            <div class="lie-sec"><hr class="sec_under_line"></div>
+                        </div>
+                        <div class="organi">
+                            <p class="hd_child">1pageonline.com constantly organise networking events across African countries, making it easy for local trades and services connect with local customers. Our events focal point is based on African businesses growth and becoming your customers first choice.</p>
+                        </div>
+                        <div class="owl-carousel owl-theme" id="follow_slide">
+                            <div class="item" ng-repeat="item in homePageEventList">
+                                <div class="fif_grid_set">
+                                    <div class="fgrid_img">
+                                        <img src="{{item.listingBanner ? item.listingBanner : 'assets/images/fif_img.png'}}">
+                                    </div>
+                                    <div class="fgrid_cont">
+                                        <div class="side_hd">
+                                            <!--<h3>Follow Our<span class="green"><br> Upcoming Events</span></h3>-->
+                                            <h3><span class="green"><br> {{item.title}}</span></h3>
+                                            <hr class="sec_under_line">
+                                        </div>
+                                        <p>{{item.shortDescription}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="upcom-bt"><a href="/upcomingevents" class="fif_set_btn">VIEW MORE</a></div>
+                    </div>
+                    <div class="col-sm-3 fif_green_bg">
+                        <div ng-if="eventData.length > 0">
+                            <div class="item" ng-repeat="item in eventData">
+
+                                <div class="load_sample">
+                                    <div class="load_num">
+                                        <h3> {{item.eventDate | date : 'dd-MMM'}}</h3>
+                                    </div>
+                                    <div class="load_cont">
+                                        <h4>{{item.title}}</h4>
+                                        <p>{{item.shortDescription}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="noupcoming" ng-if="eventData.length == 0">
+                            <i class="fa fa-exclamation" aria-hidden="true"></i>
+                            NO upcoming Event available.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sixth_set">
+            <div class="container">
+                <div class="back_shape">
+                    <div class="six_pink1">
+                        <div class="side_hd">
+                            <h4>Popular Locations</h4>
+                        </div>
+                        <div class="auto_res_wid" style="min-height:248px;">
+                            <div class="ttl_place">
+                                <ul class="place_set" style="width:50%;">
+                                    <li ng-repeat="item in popularLocationList" ng-if="$index < 6">
+                                        <a href ng-click="onPopularLocationClick(item)">{{item.text}}</a>
+                                    </li>
+                                </ul>
+                                <ul class="place_set" style="width:50%;">
+                                    <li ng-repeat="item in popularLocationList" ng-if="$index >= 6">
+                                        <a href ng-click="onPopularLocationClick(item)">{{item.text}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="six_pink2">
+                        <div class="side_hd">
+                            <h4>Popular Searches</h4>
+                        </div>
+                        <div class="auto_res_wid">
+                            <div class="ttl_place">
+                                <ul class="place_set">
+                                    <li ng-repeat="item in popularSearchList" ng-if="$index < 6">
+                                        <a href ng-click="onPopularSearchClick(item)">{{item.text}}</a>
+                                    </li>
+                                </ul>
+                                <ul class="place_set">
+                                    <li ng-repeat="item in popularSearchList" ng-if="$index >= 6 && $index < 12">
+                                        <a href ng-click="onPopularSearchClick(item)">{{item.text}}</a>
+                                    </li>
+                                </ul>
+                                <ul class="place_set">
+                                    <li ng-repeat="item in popularSearchList" ng-if="$index >= 12">
+                                        <a href ng-click="onPopularSearchClick(item)">{{item.text}}</a>
+                                    </li>
+                                </ul>
+
+                                <!--<ul class="place_set">
+                                    <li><a href="#">Dentists</a></li>
+                                    <li><a href="#">Domestic Cleaning</a></li>
+                                    <li><a href="#">Driving Schools</a></li>
+                                    <li><a href="#">Dry Cleaners</a></li>
+                                    <li><a href="#">Electricians</a></li>
+                                    <li><a href="#">Farmers</a></li>
+                                </ul>
+                                <ul class="place_set">
+                                    <li><a href="#">Fencing Services</a></li>
+                                    <li><a href="#">Florists</a></li>
+                                    <li><a href="#">Function Rooms & Banqueting</a></li>
+                                    <li><a href="#">Furniture Shops</a></li>
+                                    <li><a href="#">Hairdressers</a></li>
+                                    <li><a href="#">Indian Restaurants</a></li>
+                                </ul>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal fade modalscrolldesign" id="loginpopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title mt-0" id="exampleModalScrollableTitle">
+                        <span>Add book mark for {{selectedService.businessName}}</span>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="write-review_design">
+                                <h4 class="mt-0"><span>To add book mark for{{selectedService.businessName}}. Please login</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer modal-border">
+                    <button id="cancelEditBox" type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                    <a href="/login" class="outline_hover">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- End of HubSpot Embed Code -->
+</div>

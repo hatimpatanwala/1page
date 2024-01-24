@@ -1,0 +1,359 @@
+﻿<div ng-controller="serviceDetailsController">
+    <style type="text/css">
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+
+    <section class="inner_bnr">
+        <div class="container">
+            <div class="inner_bnr_hd">
+                <h4>{{editFormData.businessName}}</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="ser_det">
+        <div class="container">
+            <input type="hidden" id="hdforbookmark" data-toggle="modal" data-target="#loginpopup" />
+            <div class="main_ser_de_bg">
+                <div class="sml_ser_de_logo">
+                    <div class="border_box">
+                        <img style="max-height:100px; max-width:100px;" src="{{editFormData.featuredImage ? editFormData.featuredImage : 'assets/images/service-list2.png'}}">
+                        <!--<div class="img_down_cont">
+                            <i class="fa fa-clock-o"></i>NOW CLOSED
+                            <p>Open Wednesday<br>09:00 - 17:00</p>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="big_ser_de_cont">
+                    <h4>{{editFormData.businessName}}</h4>
+                    <p>{{editFormData.businessType.text}}</p>
+                    <div class="star_set_ser_de">
+                        <ul>
+                            <li>
+                                <div class="star_reviewln">
+                                    <div class="rate">
+                                        <input type="radio" id="star5" name="rate1" value="5" ng-checked="serviceReviewCount.averageCount == 5" disabled />
+                                        <label for="star5" title="{{serviceReviewCount.averageCount}}">5 stars</label>
+                                        <input type="radio" id="star4" name="rate1" value="4" ng-checked="serviceReviewCount.averageCount == 4" disabled />
+                                        <label for="star4" title="{{serviceReviewCount.averageCount}}">4 stars</label>
+                                        <input type="radio" id="star3" name="rate1" value="3" ng-checked="serviceReviewCount.averageCount == 3" disabled />
+                                        <label for="star3" title="{{serviceReviewCount.averageCount}}">3 stars</label>
+                                        <input type="radio" id="star2" name="rate1" value="2" ng-checked="serviceReviewCount.averageCount == 2" disabled />
+                                        <label for="star2" title="{{serviceReviewCount.averageCount}}">2 stars</label>
+                                        <input type="radio" id="star1" name="rate1" value="1" ng-checked="serviceReviewCount.averageCount == 1" disabled />
+                                        <label for="star1" title="{{serviceReviewCount.averageCount}}">1 star</label>
+                                    </div>
+                                </div>
+
+                            <li>{{serviceReviewCount.averageCount}}<span>({{serviceReviewCount.totalCount}} Review)</span></li>
+                            <li><a href data-toggle="modal" data-target="#editBox">Write Review</a></li>
+                        </ul>
+                    </div>
+                    <div class="bookmark" ng-if="!editFormData.isBookMarked">
+                        <a href ng-click="onAddBookMarkClick()">
+                            <i class="fa fa-bookmark-o" aria-hidden="true"></i> Bookmark.
+                        </a>
+                    </div>
+                    <div class="location_set_ser_de">
+                        <p>
+                            <i class="fa fa-map-marker"></i>5 {{editFormData.address1}}, {{editFormData.address2}}, {{editFormData.pincode}} {{editFormData.city.text}}, {{editFormData.state.text}} - {{editFormData.country.text}}
+                            <!--<a href>Directions</a>-->
+                        </p>
+                    </div>
+                    <div class="contact_ser_de">
+                        <ul>
+                            <li><a ng-class="{'buttonDisabled' : !editFormData.phoneNumber}" ng-disabled="!editFormData.phoneNumber" ng-click="onPhoneNumber()" href><i class="fa fa-phone"></i>Call</a></li>
+                            <li><a ng-class="{'buttonDisabled' : !editFormData.phoneNumber}" ng-disabled="!editFormData.email" ng-click="onEmail()" href><i class="fa fa-envelope"></i>Mail</a></li>
+                            <li><a ng-class="{'buttonDisabled' : !editFormData.phoneNumber}" ng-disabled="!editFormData.website" ng-click="onWebsite()" href><i class="fa fa-envelope"></i>Website</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="det_ser_img">
+                    <div class="img_bg_ser_de" id="map">
+                        <div class="red_bg_cont">
+                            <h4>{{editFormData.dateString}} With 1page</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ser_det_second">
+        <div class="container">
+            <div class="row det_search_set">
+
+                <div class="col-sm-3">
+                    <div class="det_sidebar1">
+                        <div class="hd_serdet">
+                            <h4>REVIEW SUMMARY</h4>
+                        </div>
+                        <div class="star_sidebar">
+                            <div class="star_set_ser_de">
+                                <ul>
+                                    <li>
+                                        <div class="star_reviewln">
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rate {{id}}" value="5" ng-checked="serviceReviewCount.averageCount == 5" disabled />
+                                                <label for="star5" title="{{serviceReviewCount.averageCount}}">5 stars</label>
+                                                <input type="radio" id="star4" name="rate {{id}}" value="4" ng-checked="serviceReviewCount.averageCount == 4" disabled />
+                                                <label for="star4" title="{{serviceReviewCount.averageCount}}">4 stars</label>
+                                                <input type="radio" id="star3" name="rate {{id}}" value="3" ng-checked="serviceReviewCount.averageCount == 3" disabled />
+                                                <label for="star3" title="{{serviceReviewCount.averageCount}}">3 stars</label>
+                                                <input type="radio" id="star2" name="rate {{id}}" value="2" ng-checked="serviceReviewCount.averageCount == 2" disabled />
+                                                <label for="star2" title="{{serviceReviewCount.averageCount}}">2 stars</label>
+                                                <input type="radio" id="star1" name="rate {{id}}" value="1" ng-checked="serviceReviewCount.averageCount == 1" disabled />
+                                                <label for="star1" title="{{serviceReviewCount.averageCount}}">1 star</label>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        {{serviceReviewCount.averageCount}}(<span>{{serviceReviewCount.totalCount}} Reviews</span>)
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="single_star">
+                            <p>5 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': serviceReviewCount.fiveStarPer + '%'}"></span>{{serviceReviewCount.fiveStar}}</p>
+                            <p>4 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': serviceReviewCount.fourStarPer + '%'}"></span>{{serviceReviewCount.fourStar}}</p>
+                            <p>3 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': serviceReviewCount.threeStarPer + '%'}"></span>{{serviceReviewCount.threeStar}}</p>
+                            <p>2 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': serviceReviewCount.twoStarPer + '%'}"></span>{{serviceReviewCount.twoStar}}</p>
+                            <p>1 <i class="fa fa-star" style="color: #f8b300;"></i><span class="blue_line" ng-style="{'width': serviceReviewCount.oneStarPer + '%'}"></span>{{serviceReviewCount.oneStar}}</p>
+                        </div>
+                        <div class="summary_btn">
+                            <a href ng-click="viewAllReviews()" class="outline_dn_hover">Read Reviews</a>
+                            <a href data-toggle="modal" data-target="#editBox" class="outline_hover">Write a Review</a>
+                        </div>
+                    </div>
+
+                    <div class="det_sidebar2">
+                        <div class="hd_serdet">
+                            <h4>OPENING HOURS</h4>
+                        </div>
+                        <div class="dates_set">
+                            <div class="date_det_set1">
+                                <div class="txt_date"> <p>Monday</p> </div>
+                                <div class="time_num"> <p>09:00 - 13:00</p><p>09:00 - 13:00</p> </div>
+                            </div>
+                            <div class="date_det_set1">
+                                <div class="txt_date"> <p>Tuesday</p> </div>
+                                <div class="time_num"> <p>09:00 - 13:00</p><p>09:00 - 13:00</p> </div>
+                            </div>
+                            <div class="date_det_set1">
+                                <div class="txt_date"> <p>Wednesday</p> </div>
+                                <div class="time_num"> <p>09:00 - 13:00</p><p>09:00 - 13:00</p> </div>
+                            </div>
+                            <div class="date_det_set1 active">
+                                <div class="txt_date"> <p>Thursday</p> </div>
+                                <div class="time_num"> <p>09:00 - 13:00</p><p>09:00 - 13:00</p> </div>
+                            </div>
+                            <div class="date_det_set1">
+                                <div class="txt_date"> <p>Friday</p> </div>
+                                <div class="time_num"> <p>09:00 - 13:00</p><p>09:00 - 13:00</p> </div>
+                            </div>
+                            <div class="date_det_set1">
+                                <div class="txt_date"> <p>Saturday</p><p>Sunday</p> </div>
+                                <div class="time_num"> <p>Closed</p> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="det_second_set_para">
+                        <h3 class="hd_det_ser_sec">{{editFormData.listingTitle}}</h3>
+                        <div class="p_det_ser_sec">
+                            <p>{{editFormData.description}}</p>
+                        </div>
+                        <!--<div class="lising_sec_set">
+                            <ul ng-if="editFormData.timezone">
+                                <li><label>Time Zone :- </label>{{editFormData.timezone}}</li>
+                            </ul>
+                        </div>-->
+                    </div>
+                    <div class="ser_det_slider" ng-if="serviceImages.length > 0">
+                        <h3 class="hd_det_ser_sec">PHOTOS</h3>
+                        <div class="slider_ser_det">
+                            <div class="owl-carousel owl-theme" id="slid_photo" style="display:none;">
+                                <div class="item" ng-repeat="item in serviceImages">
+                                    <div class="img_photo" style="background-image: url('{{ item.fileName ? item.fileName : 'assets/images/photo1.jpg' }}');"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review_report_det">
+                        <h3 class="hd_det_ser_sec">REVIEW & REPORT</h3>
+                        <p ng-if="serviceReviewList.length == 0">No Review Found.</p>
+                        <div ng-if="serviceReviewList.length > 0">
+                            <div>
+                                <div class="review_set1" ng-repeat="item in serviceReviewList | limitTo : 3">
+                                    <div class="hd_rv_rt">
+                                        <h5> <i class="fa fa-user"></i> {{item.name}}<span class="date_rev"><i class="fa fa-clock-o"></i>{{item.createdDate | date : 'dd MMM yyyy'}}</span></h5>
+                                        <p class="span_p">{{item.title}}</p>
+                                        <!--<img src="assets/images/mar_rate_star.png">-->
+                                        <!--{{item.review}} <span style="color: #ffc700;">★</span>-->
+                                        <div class="rate star_rate_cal" id="review">
+                                            <input type="radio" id="star5" name="rate {{$index}}" value="5" ng-checked="item.review == 5" disabled />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input type="radio" id="star4" name="rate {{$index}}" value="4" ng-checked="item.review == 4" disabled />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input type="radio" id="star3" name="rate {{$index}}" value="3" ng-checked="item.review == 3" disabled />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input type="radio" id="star2" name="rate {{$index}}" value="2" ng-checked="item.review == 2" disabled />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input type="radio" id="star1" name="rate {{$index}}" value="1" ng-checked="item.review == 1" disabled />
+                                            <label for="star1" title="text">1 star</label>
+                                        </div>
+                                        <br /> <br />
+                                        <div class="rev_des">
+                                            <p>{{item.description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-overall" ng-if="totalCount > 3" ng-click="viewAllReviews()"><a href>View all {{totalCount}} Reviews</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <input type="hidden" id="lat">
+    <input type="hidden" id="lng">
+    <input type="hidden" id="select-ml">
+
+    <script>
+        $(document).on("keydown", "form", function (event) {
+            return event.key != "Enter";
+        });
+    </script>
+
+    <div class="modal fade modalscrolldesign" id="editBox" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title mt-0" id="exampleModalScrollableTitle">
+                        <span>Write a review for {{editFormData.businessName}}</span>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="needs-validation" ng-submit="onSubmitClick()" ng-if="isUserAuthenticated">
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <!--<label for="review">Review title<span class="color-red">*</span></label>-->
+                                    <div class="rate star_rate_cal" id="review">
+                                        <input type="radio" id="star5" name="rate2" value="5" ng-model="formData.review" ng-checked="formData.review == 5" />
+                                        <label for="star5" title="text" ng-click="onRatingClick(5)">5 stars</label>
+                                        <input type="radio" id="star4" name="rate2" value="4" ng-model="formData.review" ng-checked="formData.review == 4" />
+                                        <label for="star4" title="text" ng-click="onRatingClick(4)">4 stars</label>
+                                        <input type="radio" id="star3" name="rate2" value="3" ng-model="formData.review" ng-checked="formData.review == 3" />
+                                        <label for="star3" title="text" ng-click="onRatingClick(3)">3 stars</label>
+                                        <input type="radio" id="star2" name="rate2" value="2" ng-model="formData.review" ng-checked="formData.review == 2" />
+                                        <label for="star2" title="text" ng-click="onRatingClick(2)">2 stars</label>
+                                        <input type="radio" id="star1" name="rate2" value="1" ng-model="formData.review" ng-checked="formData.review == 1" />
+                                        <label for="star1" title="text" ng-click="onRatingClick(1)">1 star</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="small" style="color:red" ng-if="isRatingZero">Please select a rating </span>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="validationCustom02">Your review</label>
+                                    <textarea type="text" class="form-control" id="validationCustom02" placeholder="Description" ng-model="formData.description" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="title">Review title<span class="color-red">*</span></label>
+                                    <input type="text" class="form-control" id="title" placeholder="Text" ng-model="formData.title" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Name<span class="color-red">*</span></label>
+                                    <input type="text" class="form-control" id="name" placeholder="Text" ng-model="formData.name" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group ml-10">
+                                    <label for="email">Email<span class="color-red">*</span></label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="formData.email" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="cancelEditBox" type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                        <button id="enqrybtn" type="submit" class="btn btn-primary waves-effect waves-light ladda-button" data-style="expand-right">
+                            <span class="ladda-label">Submit Review<i class="fa fa-paper-plane ml-6" aria-hidden="true"></i></span>
+                        </button>
+                    </div>
+                </form>
+                <div ng-if="!isUserAuthenticated">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="write-review_design">
+                                    <h4 class="mt-0"><span>To write a review for {{editFormData.businessName}}. Please login</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer  modal-border">
+                        <button id="cancelEditBox" type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                        <a href="/login" class="outline_hover green-bts">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modalscrolldesign" id="loginpopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title mt-0" id="exampleModalScrollableTitle">
+                        <span>Add book mark for {{editFormData.businessName}}</span>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="write-review_design">
+                                <h4 class="mt-0"><span>To add book mark for {{editFormData.businessName}}. Please login</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer modal-border">
+                    <button id="cancelEditBox" type="button" class="btn btn-light waves-effect" data-dismiss="modal">Close</button>
+                    <a href="/login" class="outline_hover">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

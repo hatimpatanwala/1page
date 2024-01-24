@@ -1,0 +1,61 @@
+﻿<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="hd_dash_sub">
+                    <h4>Bookmark List</h4>
+                </div>
+
+                <div ng-if="recordList.length == 0">No bookmark found.</div>
+
+                <div class="table_dash_brd" ng-if="recordList.length > 0">
+                    <table class="das_list">
+                        <tr>
+                            <th>Service</th>
+                            <th>Open days</th>
+                            <th>Website</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr ng-repeat="item in recordList">
+                            <td><a href ng-click="onServiceClick(item)">{{item.businessName}}</a></td>
+                            <td>{{item.openOnDays}}</td>
+                            <td>{{item.website}}</td>
+                            <td>
+                                <a title="Delete" class="text-danger" data-original-title="Delete" ng-click="onDeleteClick(item,$index)"
+                                   data-toggle="modal" data-target="#confirmDelete">
+                                    <i class="mdi mdi-trash-can font-size-18"></i><img src="assets/images/delete.png">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete - '<strong>{{selectedItem.businessName}}</strong>'?
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="closeBookmarkpopup" class="btn btn-light waves-effect" data-dismiss="modal">No</button>
+                <button id="deletebtn" type="button" ng-click="delete()" class="btn btn-primary waves-effect waves-light ladda-button" data-style="expand-right"><span class="ladda-label">Yes</span></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

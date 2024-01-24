@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en-US" ng-app="app">
+<head>
+
+    <title>1PAGEONLINE</title>
+    <meta charset="utf-8">
+    <base href="/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/ladda/ladda-themeless.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/toastr/build/toastr.min.css" />
+
+    <bundle name="wwwroot/bundles/site.min.css" />
+
+</head>
+
+<body ng-controller="mainController">
+
+    <input type="hidden" id="forSrvListing" value="@ViewBag.BusinessType" />
+
+    <div ng-include="'app/home/header.html'"></div>
+
+    <view-include src="app/service/browserServiceListing.html"></view-include>
+
+    <div ng-include="'app/home/footer.html'"></div>
+
+
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/js/myscript.js"></script>
+    <script src="assets/js/ladda/ladda.min.js"></script>
+    <script src="assets/js/ladda/spin.min.js"></script>
+    <script src="assets/js/toastr/build/toastr.min.js"></script>
+    <script src="deploy.js"></script>
+
+    <script src="app/lib/angular.min.js"></script>
+    <script src="app/lib/angular-route.min.js"></script>
+    <script src="app/lib/angular-local-storage.min.js"></script>
+    <script src="app/lib/angular-ui-router.js"></script>
+    <script src="app/lib/angular-toastr.tpls.js"></script>
+
+    <bundle name="wwwroot/bundles/site.min.js" />
+
+    <script>
+
+        $('.main_menu').on('click', 'li', function () {
+            $('.main_menu li.active').removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

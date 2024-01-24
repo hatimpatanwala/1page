@@ -1,0 +1,64 @@
+﻿<section class="inner_bnr">
+    <div class="container">
+        <div class="inner_bnr_hd">
+            <h4>Upcoming Event</h4>
+        </div>
+    </div>
+</section>
+
+<section class="upcoming-sec" ng-controller="upcomingEventsController">
+    <div class="container">
+        <div class="banner_shadow">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 event-col" ng-repeat="item in homePageEventList">
+                    <div class="inner-boxs">
+                        <div class="event_img" style="background-image: url('{{ item.listingBanner ? item.listingBanner : 'assets/images/fif-img2.png' }}')"></div>
+                        <div class="event_content">
+                            <div class="post-content">
+                                <h3><a href>{{item.title}}</a></h3>
+                                <!--<h4><a href>{{item.location}}</a></h4>-->
+                                <p>{{item.shortDescription}}</p>
+                                <div class="post-view"> <a href data-toggle="modal" data-id="eventlist" data-target="#upcoming_modal_1" ng-click="onEventClick(item)"> Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i>  </a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade upcoming_modal" id="upcoming_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Event Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> &times; </button>
+                </div>
+                <div class="modal-body">
+                    <div class="event-imgs" style=" background-image: url('{{ selecteItem.listingBanner ? selecteItem.listingBanner : 'assets/images/fif-img2.png' }}')" ></div>
+                    <div class="event-listdata">
+                        <ul>
+                            <li><span>Event Name:</span> <div class="event-names">{{selecteItem.title}}</div> </li>
+                            <li><span>Event Date:</span> <div class="event-names" > {{selecteItem.eventDate | date : 'dd/MMM/yyyy'}}</div> </li>
+                            <li><span>Start Time:</span> <div class="event-names"> {{selecteItem.startTime}}</div> </li>
+                            <li><span>End Time:</span> <div class="event-names"> {{selecteItem.endTime}}</div> </li>
+                            <li class="location-border">
+                                <label>Location:</label>
+                                <div class="line-markers">
+                                    <i class="fa fa-map-marker" aria-hidden="true">{{selecteItem.location}} {{selecteItem.pincode}}  {{selectedItem.country}}</i> <span>  </span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="description-bar">
+                            <p>{{selecteItem.detailsDescription}} </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

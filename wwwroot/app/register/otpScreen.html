@@ -1,0 +1,96 @@
+﻿<section class="inner_bnr">
+    <div class="container">
+        <div class="inner_bnr_hd">
+            <h4>Log in</h4>
+        </div>
+    </div>
+</section>
+
+
+<section class="login_page">
+    <div class="container">
+        <div class="left_space col-xs-12 col-sm-1"></div>
+        <div class="col-xs-12 col-sm-5 login">
+            <div class="login-box">
+                <div class="login-title">
+                    <h3>A verification email is sent to the {{registeredBuyer.email}}. Please check your email to complete the verification process</h3>
+                    <p class="login-description">Please enter the OTP you received in Email.</p>
+                </div>
+
+                <div class="login-form">
+                    <form ng-submit="submit()">
+                        <div class="sigin-block">
+                            <input type="text" name="otp" placeholder="Enter OTP" class="email-icon" ng-model="formData.token">
+                        </div>
+                        <label class="checsign">
+                            <span>
+                            </span>
+                            <a href ng-click="onResendOtp()" id="btnresendotp" class="ladda-button forgot-passwords" data-style="expand-right" data-spinner-color="#28d97f">
+                                <span class="ladda-label">Send the OTP Code Again</span>
+                            </a>
+                        </label>
+                        <div class="clearfix">
+                            <button id="btnverifyotp" type="submit" class="signupbtn ladda-button" data-style="expand-right"><span class="ladda-label">Submit</span></button>
+                        </div>
+                        <!--<div class="log-in-form-v3__middle flex align-center">
+                            <hr>
+                            <span class="label-v3 text-battleship-grey">OR</span>
+                            <hr>
+                        </div>-->
+                        <!--<div class="social-login">
+                            <div class="social-login">
+                                <button class="btn facebook-btn social-btn" type="button">
+                                    <span>
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        Sign in with Facebook
+                                    </span>
+                                </button>
+                                <button class="btn google-btn social-btn" type="button"><span><i class="fa fa-google-plus" aria-hidden="true"></i> Sign in with Google+</span> </button>
+                            </div>
+                        </div>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--<section class="otp_set_dol">
+    <div class="container">
+        <div class="verification_bg">
+            <div class="veri_hd">
+                <h4>VERICATION CODE</h4>
+            </div>
+            <div class="cont_otp_white">
+                <div class="extr_otp_txt">
+                    <h5>A verification email is sent to the {{registeredBuyer.email}}. Please check your email to complete the verification process</h5>
+                    <p>Please enter the OTP you received in Email.</p>
+                </div>
+                <div class="given_form_field">
+                    <form method="get" ng-submit="submit()" class="digit-group" data-group-name="digits" data-autosubmit="false">
+                        <input type="number" min="0" max="9" move-focus id="field1" name="digit-1" maxlength="1" data-next="digit-2" ng-model="formData.field1" required />
+                        <input type="number" min="0" max="9" move-focus id="field2" name="digit-1" maxlength="1" data-next="digit-2" ng-model="formData.field2" required />
+                        <input type="number" min="0" max="9" move-focus id="field3" name="digit-1" maxlength="1" data-next="digit-2" ng-model="formData.field3" required />
+                        <input type="number" min="0" max="9" move-focus id="field4" name="digit-1" maxlength="1" data-next="digit-2" ng-model="formData.field4" required />
+                        <input type="number" min="0" max="9" move-focus id="field5" name="digit-1" maxlength="1" data-next="digit-2" ng-model="formData.field5" required />
+                        <input type="number" min="0" max="9" move-focus id="field6" name="digit-1" maxlength="1" data-next="digit-2" ng-model="formData.field6" required />-->
+<!--<p>Code Expires in <span> 11:30</span></p>-->
+<!--<div class="otp_cont">-->
+<!--<a id="btnverifyotp" class="ladda-button" href="#" data-style="expand-right"><span class="ladda-label">CONTINUES</span></a>-->
+<!--<button id="btnverifyotp" type="submit" class="ladda-button" data-style="expand-right"><span class="ladda-label">CONTINUES</span></button>
+                            <p>You’re just a step away from accessing your Dolphin account.</p>
+                        </div>
+
+                        <span class="otp_again">
+                            <a href ng-click="onResendOtp()" id="btnresendotp" class="ladda-button" data-style="expand-right" data-spinner-color="#28d97f">
+                                <span class="ladda-label">Send the OTP Code Again</span>
+                            </a>
+                        </span><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->

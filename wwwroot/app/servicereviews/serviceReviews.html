@@ -1,0 +1,116 @@
+﻿<section class="inner_bnr">
+    <div class="container">
+        <div class="inner_bnr_hd">
+            <h4>Review Details</h4>
+        </div>
+    </div>
+</section>
+
+<section class="reviewdetails">
+    <div class="container">
+        <div class="row flex">
+            <div class="review-left col-xs-12 col-sm-4">
+                <div class="review-image"><a href="#"> <img src="{{editFormData.featuredImage ?editFormData.featuredImage : 'assets/images/no_img.png' }}"> </a></div>
+                <div class="productimag-title"> <a href ng-click="onDetailsClick()">{{editFormData.businessName}}</a> </div>
+                <div class="productreview-data good">
+                    <a href="#">
+                        <span>{{serviceReviewCount.averageCount}} <i class="fa fa-star" aria-hidden="true"></i></span>
+                        <p>{{serviceReviewCount.totalCount}} Reviews</p>
+                    </a>
+                </div>
+            </div> <!-- col-4 -->
+
+            <div ng-if="recordList.length == 0">No Review Found.</div>
+
+            <div class="review-right col-xs-12 col-sm-8" ng-if="recordList.length > 0">
+                <div class="side_hd">
+                    <h3>{{serviceReviewCount.businessName}} Reviews </h3>
+                    <div class="flex line-flexs"><hr class="sec_under_line"></div>
+                </div>
+                <div class="revieweach-blog">
+                    <div class="review-value">
+                        <div class="productreview-data good"> <span> {{serviceReviewCount.averageCount}}<i class="fa fa-star" aria-hidden="true"></i></span> </div>
+                        <p>{{serviceReviewCount.totalCount}} Reviews </p>
+                    </div>
+                    <div class="review-stars">
+                        <ul>
+                            <li>
+                                <div class="star-no"> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="progress-style good"> <div class="progress-width" ng-style="{'width': serviceReviewCount.fiveStarPer + '%'}"> </div></div>
+                                <div class="star-totalcount">{{serviceReviewCount.fiveStar}}</div>
+                            </li>
+                            <li>
+                                <div class="star-no"> 4 <i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="progress-style good"> <div class="progress-width" ng-style="{'width': serviceReviewCount.fourStarPer + '%'}"> </div></div>
+                                <div class="star-totalcount">{{serviceReviewCount.fourStar}}</div>
+                            </li>
+                            <li>
+                                <div class="star-no"> 3 <i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="progress-style good"> <div class="progress-width" ng-style="{'width': serviceReviewCount.threeStarPer + '%'}"> </div></div>
+                                <div class="star-totalcount">{{serviceReviewCount.threeStar}}</div>
+                            </li>
+                            <li>
+                                <div class="star-no"> 2 <i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="progress-style poor"> <div class="progress-width" ng-style="{'width': serviceReviewCount.twoStarPer + '%'}"> </div></div>
+                                <div class="star-totalcount">{{serviceReviewCount.twoStar}}</div>
+                            </li>
+                            <li>
+                                <div class="star-no"> 1 <i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="progress-style very-poor"> <div class="progress-width" ng-style="{'width': serviceReviewCount.oneStarPer + '%'}"> </div></div>
+                                <div class="star-totalcount">{{serviceReviewCount.oneStar}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="user-reviewblog">
+                    <ul>
+                        <li class="review-lines" ng-repeat="item in recordList">
+                            <div class="productreview-data good">
+                                <span>{{item.review}} <i class="fa fa-star" aria-hidden="true"></i></span>
+                                <p>{{item.title}}</p>
+                            </div>
+                            <div class="product-description-star">
+                                <p>{{item.description}}</p>
+                            </div>
+                            <div class="customer-name flex space-betwenn">
+                                <div class="custom-left">
+                                    <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+                                    {{item.createdDate | date : 'dd,MMM yyyy'}}
+                                </div>
+                                <!--<div class="custom-right">
+                                    <span class="like"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 576</span>
+                                    <span class="dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 76</span>
+                                </div>-->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="review-pagination">
+                    <div class="flex space-betwenn">
+                        <div class="page-no"> <span>Showing {{ pageNumber == 1 ?  1 : (pageSize * (pageNumber - 1)) + 1 }} to {{ (pageSize * pageNumber) > totalRecords ? totalRecords : (pageSize * pageNumber)}} of {{ totalRecords }} entries</span> </div>
+                        <div class="page-counts">
+                            <ul>
+                                <li class="prev" ng-disabled="DisablePrevPage()">
+                                    <a href> <span ng-click="prevPage()">Previous</span> </a>
+                                </li>
+                                <li ng-repeat="n in range()"
+                                    ng-class="{'active': (n + 1) == pageNumber}"
+                                    ng-click="setPage(n + 1)">
+                                    <a href>{{n+1}}</a>
+                                </li>
+                                <li class="next" ng-class="DisableNextPage()">
+                                    <a href> <span ng-click="nextPage()">Next</span> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- col-8 -->
+
+
+        </div> <!-- row -->
+    </div>
+</section>

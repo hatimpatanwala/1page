@@ -1,0 +1,43 @@
+<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="hd_dash_sub">
+                    <h4>My Listing</h4>
+
+                    <div class="add_room add-hour">
+                        <button type="button" class="add-bt" ng-click="new()"> <i class="fa fa-plus" aria-hidden="true"></i> Add Listing</button>
+                    </div>
+                </div>
+
+                <div ng-if="recordList.length == 0">No Listing Found, Start Adding.</div>
+
+                <div class="table_dash_brd" ng-if="recordList.length > 0">
+                    <table class="das_list">
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>TYPE</th>
+                            <!--<th>RATING</th>-->
+                            <th>EDIT</th>
+                        </tr>
+                        <tr ng-repeat="item in recordList">
+                            <td class="list_dash_img"><img src="{{item.featuredImage ? item.featuredImage : 'assets/images/no_img.png'}}"></td>
+                            <td>{{item.businessName}}</td>
+                            <td>{{item.businessType.text}}</td>
+                            <!--<td><img src="images/mar_rate_star.png"> (5 Star)</td>-->
+                            <td class="edit"><a href ng-click="onEdit(item)"><img src="assets/images/edit_icon.png"></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

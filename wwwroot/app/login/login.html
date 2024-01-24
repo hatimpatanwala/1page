@@ -1,0 +1,60 @@
+﻿<section class="inner_bnr" style="background-image: url(assets/images/login_bnr.jpg);">
+    <div class="container">
+        <div class="inner_bnr_hd">
+            <!--<h4>Log in</h4>-->
+        </div>
+    </div>
+</section>
+
+
+<section class="login_page" ng-controller="login">
+    <div class="container">
+        <div class="left_space col-xs-12 col-sm-1"></div>
+        <div class="col-xs-12 col-sm-5 login">
+            <div class="login-box">
+                <div class="login-title">
+                    <h3>Sign in to continue</h3>
+                    <p class="login-description">Welcome Back, Sign in to continue access pages</p>
+                </div>
+
+                <div class="login-form">
+                    <form ng-submit="signIn()">
+                        <div class="sigin-block">
+                            <input type="text" name="email" placeholder="Enter your email*" class="email-icon" ng-model="signinData.username" auto-focus required>
+                        </div>
+                        <div class="sigin-block">
+                            <input type="password" minlength="6" name="password" placeholder="Enter your password*" class="pwd-icon" ng-model="signinData.password" required>
+                        </div>
+                        <label class="checsign">
+                            <span>
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember">Remember me
+                            </span>
+                            <a href ng-click="onForgotPasswordClick()" class="forgot-passwords">Forgot Password?</a>
+                        </label>
+                        <div class="clearfix">
+                            <button type="submit" id="loginbtn" class="signupbtn ladda-button" data-style="expand-right"><span class="ladda-label">Login</span></button>
+                        </div>
+                        <div class="secondary-bt">  <button type="button" ng-click="onRegisterClick()" name="submit">Register</button></div>
+                        <!--<div class="log-in-form-v3__middle flex align-center">
+                            <hr>
+                            <span class="label-v3 text-battleship-grey">OR</span>
+                            <hr>
+                        </div>-->
+                        <!--<div class="social-login">
+                            <div class="social-login">
+                                <button class="btn facebook-btn social-btn" type="button">
+                                    <span>
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        Sign in with Facebook
+                                    </span>
+                                </button>
+                                <button class="btn google-btn social-btn" type="button"><span><i class="fa fa-google-plus" aria-hidden="true"></i> Sign in with Google+</span> </button>
+                            </div>
+                        </div>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

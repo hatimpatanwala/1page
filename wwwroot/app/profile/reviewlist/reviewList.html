@@ -1,0 +1,71 @@
+﻿<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="hd_dash_sub">
+                    <h4>Product Review List</h4>
+                </div>
+
+                <div ng-if="productRecordList.length == 0">No review Found.</div>
+
+                <div class="table_dash_brd" ng-if="productRecordList.length > 0">
+                    <table class="das_list">
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Title</th>
+                            <th>Review</th>
+                            <th>Date</th>
+                        </tr>
+                        <tr ng-repeat="item in productRecordList">
+                            <td>{{item.productName}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.review}}</td>
+                            <td>{{item.createdDate | date : 'dd/MM/yyyy'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+           
+            <div class="col-sm-9 mt-50">
+
+                <div class="hd_dash_sub">
+                    <h4>Business Review List</h4>
+                </div>
+
+                <div ng-if="serviceRecordList.length == 0">No  review Found.</div>
+
+                <div class="table_dash_brd" ng-if="serviceRecordList.length > 0">
+                    <table class="das_list">
+                        <tr>
+                            <th>Business Name</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Title</th>
+                            <th>Review</th>
+                            <th>Date</th>
+                        </tr>
+                        <tr ng-repeat="item in serviceRecordList">
+                            <td>{{item.businessName}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.review}}</td>
+                            <td>{{item.createdDate | date : 'dd/MM/yyyy'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

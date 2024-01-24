@@ -1,0 +1,139 @@
+            <!-- Mobile Header -->
+<header class="mobile-header dnone">
+    <div id="mobile-nav" class="mob-header">
+
+        <div class="container">
+            <div class="row">
+                <div class="nav-primary nav-belt">
+                    <div class="nav-left">
+                        <button class="menu-button navbar-btn" type="button" id="sidebarCollapse-mobile">
+                            <span class="icon-spar"></span>
+                            <span class="icon-spar"></span>
+                            <span class="icon-spar"></span>
+                        </button>
+                        <div class="logo">
+                            <a class="navbar-brand" href="/" id="mobile-header-logo">
+                                <img src="assets/images/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="nav-right">
+                        <div class="nav-tools">
+                            <a id="mobile-header-transport" class="nav-a" title="Book a transport">
+                                <span class="transport-icon">
+                                    <!-- <i class="la la-truck"></i> -->
+                                    <img src="assets/images/truck2.png" alt="">
+                                </span>
+                                <!-- <div class="nav-line-1-container">
+                                    <span class="nav-line-1">Sign In</span>
+                                </div> -->
+                                <!-- <span class="nav-line-2 ">Account &amp; Lists</span> -->
+                            </a>
+                            <a href id="main-header-buyermbl" class="nav-a" title="Sign in or Register">
+                                <span class="user-icon">
+                                    <!-- <i class="la la-user"></i> -->
+                                    <img src="assets/images/user-50x37.png" alt="">
+                                </span>
+                                <!-- <div class="nav-line-1-container">
+                                    <span class="nav-line-1">Sign In</span>
+                                </div> -->
+                                <!-- <span class="nav-line-2 ">Account &amp; Lists</span> -->
+                            </a>
+                            <a href ng-click="onCartClick()" class="nav-a" title="Proceed for checkout">
+                                <span class="cart-icon">
+                                    <!-- <i class="la la-shopping-cart"></i> -->
+                                    <img src="assets/images/cart-50x37.png" alt="">
+                                    <span class="ron_num_mob">{{products.length}}</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-searchbar search-big">
+                    <div class="search-container nav-search">
+                        <form ng-submit="doSearch()" class="row banner-search nav-searchbar">
+                            <div class="form_field addres">
+                                <input type="text" class="form-control nav-input width-110" placeholder="Enter product name or keyword"  ng-model="searchFormData.sterm" required>
+                            </div>
+                            <!-- <div class="form_field tpmax">
+                                <div class="form-group">
+                                    <div class="drop-menu">
+                                        <div class="select">
+                                            <span>Product Category</span>
+                                            <i class="fa fa-angle-down"></i>
+                                        </div>
+                                        <input type="hidden" name="gender">
+                                        <ul class="dropeddown">
+                                            <li>For Sale</li>
+                                            <li>For Rent</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="form_field srch-btn">
+                                <button class="btn btn-outline-primary" type="submit">
+                                    <i class="la la-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <!-- <a href="#" title="" class="close-menu"><i class="la la-close"></i></a> -->
+                    </div>
+                </div>
+
+                <!-- <div class="transport-mobi">
+                    <a href="#" class="nav-a">
+                        <span class="transport-icon">
+                            <img src="assets/images/transport-logo.jpg">
+                        </span>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</header>
+
+<header id="mobile-header-sticky" class="mobile-header-sticky fixed-top dnone">
+    <div id="mobile-nav" class="mob-header">
+
+        <div class="container">
+            <div class="row">
+                <div class="nav-primary nav-belt">
+                    <div class="nav-left">
+                        <button class="menu-button navbar-btn" type="button" id="sidebarCollapse-mobile-sticky">
+                            <span class="icon-spar"></span>
+                            <span class="icon-spar"></span>
+                            <span class="icon-spar"></span>
+                        </button>
+                    </div>
+                    <div class="nav-right">
+                        <div class="nav-tools">
+                            <a href ng-click="onCartClick()" class="nav-a">
+                                <span class="cart-icon">
+                                    <!-- <i class="la la-shopping-cart"></i> -->
+                                    <img src="assets/images/cart-50x37.png" alt="">
+                                    <span class="ron_num_mob">{{products.length}}</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="nav-fill">
+                        <div class="search-container nav-search">
+                            <form ng-submit="doSearch()" class="row banner-search nav-searchbar">
+                                <div class="form_field addres">
+                                    <input type="text" class="form-control nav-input" placeholder="Enter product name or keyword" ng-model="searchFormData.sterm" required>
+                                </div>
+                                <div class="form_field srch-btn">
+                                    <button class="btn btn-outline-primary" type="submit">
+                                        <i class="la la-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <!-- <a href="#" title="" class="close-menu"><i class="la la-close"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header><!--header end-->

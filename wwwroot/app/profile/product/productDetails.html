@@ -1,0 +1,152 @@
+<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="hd_dash_sub">
+                    <h4>Edit Product</h4>
+
+                    <div class="add_room add-hour">
+                        <button type="button" class="add-bt" ng-click="onBackClick()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back To Listing</button>
+                    </div>
+                </div>
+
+                <form ng-submit="submit()" name="userForm" autocomplete="off">
+
+
+                    <div class="listing_form">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 web-title">
+                                <div class="flex">
+                                    <div class="busines-title">
+                                        <label>Business Name:</label>
+                                        <p>Web Development</p>
+                                    </div>
+                                    <div class="busines-title">
+                                        <label>Categories:</label>
+                                        <p>Education</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Name</label>
+                                <input type="text" name="text" ng-model="editFormData.name" placeholder="Name*" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Categories</label>
+                                <select id="city" ng-model="editFormData.category" ng-options="ug.name for ug in categories" required>
+                                    <option value="">-- Select a category* --</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <label>Short Description</label>
+                                <textarea id="ckplot" ng-model="editFormData.shortDescription" placeholder="Short Description*" required></textarea>
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <label>Description</label>
+                                <textarea id="ckplot" ng-model="editFormData.details" placeholder="Description"></textarea>
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <label>Regular Price</label>
+                                <input type="number" name="firstname" ng-model="editFormData.price" placeholder="Price*" required>
+                            </div>
+                            <!--<div class="col-xs-12 col-sm-6">
+                                <label>Sale Price</label>
+                                <input type="number" name="firstname" ng-model="editFormData.sellingPrice" placeholder="Selling Price*" required>
+                            </div>-->
+                            <div class="col-xs-12 col-sm-6">
+                                <label>Is Available</label>
+                                <input type="checkbox" name="text" ng-model="editFormData.isAvailable">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" submit-changes">
+                        <button id="updatebtn" type="submit" name="button" class="ladda-button" data-style="expand-right"><i class="fa fa-plus" aria-hidden="true"></i><span class="ladda-label">Update Product</span></button>
+                    </div>
+
+                </form>
+
+                <div class="col-xs-12 col-sm-12 upload-newdesign1">
+                    <label class="label-font-size">Product Featured Image</label>
+                    <div class="upload_image">
+                        <div class="col-xs-12 col-sm-12" ng-if="!editFormData.imageName">
+                            <form ng-submit="savePFI()" autocomplete="off">
+                                <input type="file" class="custom-file-input" name="file-upload" id="fileNamePFI" accept="image/*"
+                                       onchange="angular.element(this).scope().saveFilesReferencePFI(this.files)" required />
+                                <label class="custom-file-label" for="customFile">Choose an image file</label>
+                                <button id="changeImageBtn" class="btn rmfield ladda-button addgreenbt" type="submit" data-style="expand-right" title="Image"><i class="fa fa-upload"></i><span class="ladda-label">Uplaod</span></button>
+                                <button class="btn rmfield deletegreenbt" type="button" ng-click="clearPFI()"><i class="fa fa-eraser"></i>Clear</button>
+                            </form>
+                        </div>
+                        <div class="image-div" ng-if="editFormData.imageName">
+                            <div class="image-upload">
+                                <div class="flex-data">
+                                    <img src="{{editFormData.imageName}}" alt="img">
+                                </div>
+                                <div id="deleteFIbtn" class="delete-icon ladda-button" data-style="expand-right" ng-click="deleteFeaturedImage()">
+                                    <span class="ladda-label"><i class="fa fa-trash"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 upload-newdesign1">
+                    <label class="label-font-size">Product Images</label>
+                    <div class="upload_image">
+                        <div class="col-xs-12 col-sm-12">
+                            <form ng-submit="savePI()" autocomplete="off">
+                                <input type="file" class="custom-file-input" name="file-upload" id="fileNamePI" accept="image/*" multiple
+                                       onchange="angular.element(this).scope().saveFilesReferencePI(this.files)" required />
+                                <label class="custom-file-label" for="customFile">Choose an image file</label>
+                                <button id="changeImageBtn1" class="addgreenbt btn rmfield ladda-button" type="submit" data-style="expand-right" title="Image"><i class="fa fa-upload"></i><span class="ladda-label">Uplaod</span></button>
+                                <button class="deletegreenbt btn rmfield" type="button" ng-click="clearPI()"><i class="fa fa-eraser"></i>Clear</button>
+                            </form>
+                        </div>
+                        <div class="image-div" ng-if="productImages.length > 0">
+                            <div class="image-upload" ng-repeat="item in productImages">
+                                <div class="flex-data">
+                                    <img src="{{item.fileName}}" height="200" width="200" />
+                                </div>
+                                <div class="text-center">
+                                    <i class="btn btn-link fa fa-arrow-down color-danger" title="Make Active" ng-if="!item.isActive" ng-click="updatePI(item,true)"></i>
+                                    <i class="btn btn-link fa fa-arrow-up color-success" title="Make Inactive" ng-if="item.isActive" ng-click="updatePI(item,false)"></i>
+                                    <i class="btn btn-link fa fa-trash color-black" data-toggle="modal" data-target="#confirmDeleteImage" ng-click="onImageDelete(item,$index)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="confirmDeleteImage" style="margin-top:100px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete image ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">No</button>
+                <button id="deletePIbtn" type="button" ng-click="removePI(selectedImage)" class="btn btn-primary waves-effect waves-light ladda-button" data-style="expand-right"><span class="ladda-label">Yes</span></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

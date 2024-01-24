@@ -1,0 +1,51 @@
+﻿<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+            <div class="col-sm-9">
+                <script src="../home/homeController.js"></script>
+                <div class="box_main">
+                    <div class="box1">
+                        <h3>{{editFormData.noOfBusiness}}</h3>
+                        <p>No of business</p>
+                    </div>
+                    <div class="box1 set2" style="background-color: #3C4D59;">
+                        <h3>{{editFormData.noOfProducts}}</h3>
+                        <p>No of products</p>
+                    </div>
+                    <div class="box1 set3">
+                        <h3>{{editFormData.totalProductReview}}</h3>
+                        <p>Total product review</p>
+                        <a href></a>
+                    </div>
+                    <div class="box1 set4" style="background-color: #3C4D59;">
+                        <h3>{{editFormData.totalServiceReview}}</h3>
+                        <p>Total service reviews</p>
+                    </div>
+                </div>
+                <div class="box_main" style="margin-top: 20px;">
+                    <div class="box1" style="background-color: #3C4D59;">
+                        <h3>{{editFormData.noOfProductEnquiries}}</h3>
+                        <p>No of product enquiries</p>
+                    </div>
+                    <div class="box1 set2">
+                        <h3>{{editFormData.totalBusinessView}}</h3>
+                        <p>Total business view</p>
+                    </div>
+                    <div class="box1 set3" style="background-color: #3C4D59;">
+                        <h3>{{editFormData.bookmarkedBusiness}}</h3>
+                        <p>Business bookmark</p>
+                    </div>
+                    <div class="box1 set4">
+                        <h3>200</h3>
+                        <p>Listing views</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,35 @@
+﻿        <!-- Sidebar Holder -->
+<nav id="sidebar" ng-controller="pushmenuController">
+    <div id="dismiss">
+        <i class="fa fa-arrow-left"></i>
+    </div>
+
+    <div class="sidebar-header">
+        <h3>Products</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <p>Categories</p>
+        </li>
+
+        <li ng-repeat="cat in categories">
+            <a href="#{{cat.catname}}" data-toggle="collapse" aria-expanded="false" target="_self">{{ cat.name }}</a>
+            <ul class="collapse list-unstyled sidebar-link-class1" id="{{cat.catname}}">
+                <li ng-repeat="p in products | filter:{ subcategory : { name : cat.name}}:true">
+                    <a class="dimissLink" href="#products/{{ p.name }}">{{ p.name }}</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <p>Requirements</p>
+        </li>
+        <li>
+            <a href ng-click="onPostRequirement()">Post your requirement</a>
+        </li>
+        <li>
+            <a href="/transport">Book a transport</a>
+        </li>
+    </ul>
+</nav>

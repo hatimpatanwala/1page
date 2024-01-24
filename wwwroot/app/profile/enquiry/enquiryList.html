@@ -1,0 +1,43 @@
+<ng-include src="'app/profile/profileHeader.html'"></ng-include>
+
+<section class="slide_dash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <ng-include src="'app/home/profile-menu.html'"></ng-include>
+            </div>
+
+            <div class="col-sm-9">
+
+                <div class="hd_dash_sub">
+                    <h4>Enquiry List</h4>
+                </div>
+
+                <div ng-if="recordList.length == 0">No enquiries Found.</div>
+
+                <div class="table_dash_brd" ng-if="recordList.length > 0">
+                    <table class="das_list">
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>email</th>
+                            <th>phoneNumber</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Message</th>
+                        </tr>
+                        <tr ng-repeat="item in recordList">
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.phoneNumber}}</td>
+                            <td>{{item.createdDate | date : 'dd/MM/yyyy'}}</td>
+                            <td>{{item.isSendEnquiry ? 'Send' : 'Received'}}</td>
+                            <td>{{item.message}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+﻿<section class="inner_bnr" style="background-image: url('/assets/images/newsletter.jpg')">
+    <div class="container">
+        <div class="inner_bnr_hd">
+            <h4>News Letter</h4>
+        </div>
+    </div>
+</section>
+
+
+<section class="newsletter" ng-controller="newsLetterController">
+    <div class="container">
+        <div class="news-form">
+
+            <div class="newstitle-img">
+                <img src="assets/images/newsletter.png">
+                <div class="side_hd">
+                    <h3>Subscribe To<span class="green"> Our Newsletter</span></h3>
+                    <hr class="sec_under_line">
+                </div>
+            </div>
+            <p>Join our subscribes list to get the latest news, updates and special <br> offers delivered directly in your inbox. </p>
+            <form ng-submit="submit()">
+                <input type="email" required name="text" placeholder="Enter your email*" ng-model="formData.email">
+                <button id="createbtn" type="submit" name="button" class="ladda-button" data-style="expand-right"><img src="assets/images/newsletter1.png"><span class="ladda-label"> Subscribe Now</span></button>
+            </form>
+        </div>
+    </div>
+</section>

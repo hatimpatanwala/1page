@@ -1,0 +1,65 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/bundles/site.min.css",
+    "inputFiles": [
+      "wwwroot/assets/css/mobile-fooder.css",
+      "wwwroot/assets/css/login.css",
+      "wwwroot/assets/css/login_responsive.css",
+      "wwwroot/assets/css/style.css",
+      "wwwroot/assets/css/responsive.css",
+      "wwwroot/assets/css/mobile-menu.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/site.min.js",
+    "inputFiles": [
+      "wwwroot/app/app.js",
+      "wwwroot/app/authInterceptorService.js",
+      "wwwroot/app/authService.js",
+      "wwwroot/app/common.js",
+      "wwwroot/app/constant.js",
+      "wwwroot/app/router.js",
+      "wwwroot/app/sumOfValue.js",
+      "wwwroot/app/navigate.js",
+
+      "wwwroot/app/advertisehere/advertiseHereController.js",
+      "wwwroot/app/common/contactusController.js",
+      "wwwroot/app/common/helpSupportController.js",
+      "wwwroot/app/common/newsController.js",
+      "wwwroot/app/common/newsLetterController.js",
+      "wwwroot/app/freetools/freeToolsController.js",
+      "wwwroot/app/home/homeController.js",
+      "wwwroot/app/home/mainController.js",
+      "wwwroot/app/home/personalDetailsController.js",
+      "wwwroot/app/home/pushmenuController.js",
+      "wwwroot/app/login/forgotPasswordController.js",
+      "wwwroot/app/login/resetPasswordController.js",
+      "wwwroot/app/login/login.js",
+      "wwwroot/app/marketplace/marketPlaceController.js",
+      "wwwroot/app/otherservices/otherServicesController.js",
+      "wwwroot/app/product/productDetailsController.js",
+      "wwwroot/app/register/otpScreenController.js",
+      "wwwroot/app/register/registerController.js",
+      "wwwroot/app/profile/profileController.js",
+      "wwwroot/app/profile/profileDetailsController.js",
+      "wwwroot/app/profile/changepassword/changePasswordController.js",
+      "wwwroot/app/profile/mylisting/listingDetailsController.js",
+      "wwwroot/app/profile/mylisting/listingListController.js",
+      "wwwroot/app/profile/mylisting/newListingController.js",
+      "wwwroot/app/profile/product/newProductController.js",
+      "wwwroot/app/profile/product/productDetailsController.js",
+      "wwwroot/app/profile/enquiry/enquiryListController.js",
+      "wwwroot/app/thankyou/thankyouController.js",
+      "wwwroot/app/product/productDetailsController.js",
+      "wwwroot/app/service/searchServiceListingController.js",
+      "wwwroot/app/service/browserServiceListingController.js",
+      "wwwroot/app/service/serviceDetailsController.js",
+      "wwwroot/app/service/serviceListingController.js",
+      "wwwroot/app/servicereviews/serviceReviewsController.js",
+      "wwwroot/app/upcomingevents/upcomingEventsController.js",
+      "wwwroot/app/profile/bookmark/bookmarkListController.js",
+      "wwwroot/app/productreviews/productReviewsController.js",
+      "wwwroot/app/profile/reviewlist/reviewListController.js"
+    ]
+  }
+]

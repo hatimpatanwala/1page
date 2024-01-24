@@ -1,0 +1,479 @@
+@media(min-width: 768px){
+.mobile-app{
+	display: none;
+}
+}
+
+@media(max-width: 767px){
+.our-app{
+	background-image: initial;
+}
+.login_page, .other-service {
+    padding: 30px 0;
+}
+.login-box {
+    padding: 20px 15px;
+}
+.newsletter{
+	margin-top: 0;
+}
+
+.newsletter {
+    margin-bottom: 20px;
+}.mobile-app {
+    background-image: url(../images/download-ourapp.jpg);
+    min-height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+    background-color: #e6fee4;
+}
+.social-btn{
+	margin-bottom: 8px;
+	margin-right: 0;
+}
+.inner_bnr_hd h4 {
+	    top: 6.6pc;
+    font-size: 41px;
+}
+.left-space {
+    padding-left: 0;
+}
+.hotel-name:before, .left-space:before{
+	width: 100%;
+}
+.hotel-name .container{
+	padding: 20px;
+}
+.hotel-left h2{
+	font-size: 22px;
+}
+
+.hotel-left.relavance {
+    text-align: left;
+}
+.hotel-left select{
+	min-width: 80%;
+	margin-top: 12px;
+}
+.relavance {
+    padding: 0;
+    text-align: left;
+}
+.chat-icon:before{
+	width: 100%;
+	border-radius: 0;
+}
+.business-data{
+	padding: 15px;
+}
+.company-grid{
+	padding: 0;
+}
+.chat-icon{
+	background: #3b4851;
+	padding: 16px;
+}
+.chat-icon:before,.chat_business:before{
+	display: none;
+}
+.company-left, .company-right{
+	width: 100%;
+	text-align: left;
+	display: block;
+}
+.company-left{
+	padding: 10px 0;
+}
+.side_hd h3 {
+    font-size: 34px;
+    line-height: 41px;
+}
+.banner_shadow{
+	padding: 20px;
+}
+.company-list p{
+	width: 100%;
+}
+.call-data li{
+	margin-bottom: 12px;
+}.hotel-img {
+    min-height: 76px;
+}
+
+.hote-details .col-sm-4 {
+    width: 50%;
+    padding: 10px 5px;
+}
+.hotel-review{
+	display: block;
+	position: relative;
+}
+.chat-right {
+    margin-top: 0;
+}
+.banner_shadow{
+	margin-top: 0;
+}
+.listing_form .col-xs-12 {
+    padding: 9px 0;
+}
+.image-div{
+	padding: 15px;
+}
+.image-upload {
+    width: 27.333%;
+    margin: 12px 8px;
+}
+.flex-data{
+	min-height: 90px;
+}
+.working-hours li.active-day span, .working-hours li:hover span{
+	display: inline-block;
+}section.inner_bnr {
+    height: 280px;
+    min-height: 280px;
+}
+.inner_bnr_hd {
+    padding: 10px;
+}
+.working-hours li{
+	margin: 6px 0;
+}
+.product_left, .search-proudct, .social-content{
+	margin: 0;
+	padding: 20px;
+}
+.product_left,.product_right{
+	width: 100%;
+}
+.product_image, .product-content{
+	width: 100%;
+	margin: 15px 0;
+}
+.product_image a{
+	min-height: 320px;
+}
+.product-content {
+    padding: 15px 0;
+}
+.product-tabs {
+    width: 100%;
+    padding: 15px 0;
+    margin: 0;
+}.product-tabs .nav {
+    width: 100%;
+    border: 1px solid #dbdbdb;
+}
+.product-tabs .tab-content {
+    width: 100%;
+    padding-left: 0;
+    margin-top: 20px;
+}.product-tabs .nav>li>a {
+    border-bottom: none;
+    background-image: initial;
+    margin: 0;
+    padding: 10px 12px;
+}
+.product-tabs .nav>li {
+    position: relative;
+    display: inline-block;
+    width: 49%;
+}
+.product-tabs .nav>li:first-child a{
+	border-right: 1px solid #dbdbdb;
+}
+.product_left {
+    padding: 15px;
+}
+.product_left .rl-productlist .list_grid {
+    padding: 15px 0;
+}
+.list_cont{
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.rl-productlist .list_cont{
+	padding-top: 50px;
+}
+.search-proudct {
+    padding: 20px 0;
+}.product_right {
+    padding: 15px;
+}
+.contactus-right.listing_form {
+    margin-top: 0;
+    padding-left: 0;
+    border-left: none;
+    padding-top: 15px;
+    border-top: 1px solid #dbdbdb;
+    margin-top: 20px;
+}
+.contactus-left {
+    padding-right: 0;
+}
+.contactus-left iframe {
+    height: 300px;
+}
+.advertise_page .contactus .contactus-right .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.pad-left {
+    padding: 0;
+}
+.label-check input{
+	margin-left: 0;
+}
+.our-app {
+    padding: 20px;
+    min-height: initial;
+}
+.our-form {
+    max-width: 520px;
+    margin-left: 0;
+}
+.our-playstore li{
+	margin-right: 7px;
+}
+.our-playstore img {
+    max-width: 131px;
+}
+.news-form{
+	padding: 20px;
+}
+.news-form input {
+    width: 100%;
+    max-width: 400px;
+}
+.service_cols {
+    width: 100%;
+    display: block;
+    padding: 20px 15px;
+    vertical-align: top;
+}
+.otherservice-img{
+	min-height: 260px;
+}
+.terms-conditions, .space-even {
+    padding: 20px;
+}
+.upcoming-sec .row {
+    margin: 0 -15px;
+}
+
+.event_img {
+    width: 100%;
+}
+.event_img {
+    min-height: 220px;
+}
+.event_content {
+    position: relative;
+    top: 0;
+    background: #ffffff;
+    left: 0;
+    width: 100%;
+    filter: drop-shadow(0px 0px 7px #d6d6d6);
+}
+.banner_shadow{
+	margin-bottom: 30px;
+}
+.upcoming-sec .banner_shadow{
+	filter: initial;
+}
+} /*767px*/
+
+
+@media(min-width: 768px) and (max-width: 1023px){
+.login {
+    min-width: 490px;
+}
+.upcoming-sec .row {
+    margin: 0 -15px;
+}
+
+.event_img {
+    width: 100%;
+}
+.event_img {
+    min-height: 220px;
+}
+.event_content {
+    position: relative;
+    top: 0;
+    background: #ffffff;
+    left: 0;
+    width: 100%;
+    filter: drop-shadow(0px 0px 7px #d6d6d6);
+}
+.banner_shadow{
+	margin-bottom: 30px;
+}
+.upcoming-sec .banner_shadow{
+	filter: initial;
+}
+.service_cols{
+	width: 49%;
+}
+.listing_form .col-xs-12 {
+    padding: 7px 10px;
+}
+.address-box .address-icon{
+	margin-right: 8px;
+}
+.contactus-right.listing_form{
+	padding-left: 12px;
+}
+.address_details{
+	word-break: break-all;
+}
+.our-app{
+	padding: 30px 20px;
+    min-height: 360px;
+}
+.our-form {
+    max-width: 710px;
+    margin-left: 0;
+}
+.our-form .side_hd h3 {
+    font-size: 44px;
+}
+.product_right {
+    width: 46%;
+    padding-left: 0;
+    margin-top: 30px;
+}.product_left {
+    width: 100%;
+}
+.working-hours li{
+	margin: 6px 0;
+}
+.banner_shadow{
+	padding: 20px;
+}
+.left-space {
+    padding-left: 0;
+}
+.hotel-name:before, .left-space:before{
+	display: none;
+}
+section.hotel-name.left-space {
+    background: #DCF2DD;
+}
+.hotel-left select{
+	min-width: 400px;
+}
+.hotel-left.relavance{
+    width: 100%;
+    text-align: left;
+    margin-top: 19px;
+    padding: 0;
+}
+.business-data{
+	padding: 15px;
+}
+.company-grid{
+	padding: 0;
+}
+.chat-icon{
+	background: #3b4851;
+	padding: 16px;
+}
+.chat-icon:before,.chat_business:before{
+	display: none;
+} 
+.chat-left {
+    width: 100%;
+}
+section.chat_business.left-space .container{
+	width: 100%;
+}
+.company-details {
+    padding: 15px;
+    width: 100%;
+}
+.chat-right {
+    margin-top: 10px;
+    width: 60%;
+    max-width: 400px;
+}
+.hote-details.row {
+    max-width: 430px;
+}
+.side_hd h3 {
+    font-size: 37px;
+    line-height: 45px;
+}
+} /*1023*/
+
+@media(min-width: 1024px) and (max-width: 1199px){
+.company-details {
+    width: 100%;
+}
+.otherservice-img{
+	min-height: 220px;
+}
+.our-app{
+	min-height: 440px;
+}
+.our-form {
+    margin-left: 0;
+}
+.our-form .side_hd h3{
+	font-size: 50px;
+}
+.list-select a{
+	padding: 7px 13px;
+}
+.list_btn {
+    padding: 14px 10px;
+}
+.search-input{
+	padding: 12px;
+}
+.chat-left{
+    width: 61%;
+}.chat-right {
+	margin-top: 30px;
+    width: 39%;
+}
+.chat_business .chat-left{
+	width: 100%;
+}
+.working-hours li{
+	margin: 6px 0;
+}
+.chat-icon{
+	background: #3b4851;
+	padding: 16px;
+}
+.chat-icon:before,.chat_business:before{
+	display: none;
+} 
+.left-space {
+    padding-left: 0;
+}
+.hotel-name .container,.chat_business .container{
+	width: 100%;
+}
+.hotel-name:before, .left-space:before{
+	display: none;
+}
+section.hotel-name.left-space{
+	background: #DCF2DD;
+	padding:  0 20px;
+}
+.business-data {
+    padding-left: 0;
+}
+}
+
+@media(min-width: 1920px){
+section.inner_bnr{
+	min-height: 430px;
+}
+.inner_bnr_hd h4{
+	top: 10.6pc;
+}
+} /*1920*/

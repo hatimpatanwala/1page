@@ -1,0 +1,188 @@
+﻿<div ng-controller="serviceListingController">
+    <section class="inner_bnr">
+        <div class="container">
+            <div class="inner_bnr_hd">
+                <h4>Sercices Listing</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="hotel-name left-space">
+        <div class="container">
+            <div class="row">
+                <div class="hotel-left col-xs-12 col-sm-9">
+                    <h2>Hote Name With <span>Location</span></h2>
+                    <p>Did you mean a different Location?</p>
+                </div>
+
+                <div class="hotel-left relavance col-xs-12 col-sm-3">
+                    <select>
+                        <option>Sort By</option>
+                        <option>Relaevance</option>
+                        <option>Popularity</option>
+                        <option>Price - Low to High</option>
+                        <option>Price - High to Low</option>
+                        <option>Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="chat_business left-space">
+        <div class="container ">
+            <div class="row">
+                <div class="chat-left col-xs-12 col-sm-9">
+                    <div class="chat-icon">
+                        <p><img src="assets/images/service-list1.png" alt="service-list1">Chat to businesses instantly! Look for the message button to start a conversation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="business-data">
+        <div class="container ">
+            <div class="row">
+                <div class="chat-left col-xs-12 col-sm-9">
+                    <div class="company-grid">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 company-details" ng-repeat="item in recordList">
+                                <div class="company-bg">
+                                    <div class="border-cmp">
+                                        <div class="company-title">
+                                            <div class="company-left">
+                                                <h2 ng-click="onEdit(item)"><a href>{{item.businessName}}</a></h2>
+                                                <span>({{item.businessType.text}})</span>
+                                            </div>
+                                            <div class="company-right">
+                                                <img src="{{item.featuredImage ? item.featuredImage : 'assets/images/service-list2.png'}}" alt="service-list2">
+                                            </div>
+                                        </div>
+                                        <div class="location">
+                                            <img src="assets/images/service-list3.png" alt="service-list2">
+                                            <span>{{item.town}}, {{item.city.text}} - {{item.country.text}}</span>
+                                        </div>
+                                        <ul class="call-data">
+                                            <li ng-if="item.phoneNumber"><a href="tel:{{item.phoneNumber}}"> <img src="assets/images/service-list12.png" alt="img"> Call Now </a></li>
+                                            <li ng-if="item.website"><a href="{{item.website}}"> <img src="assets/images/service-list4.png" alt="img"> Website </a></li>
+                                            <li ng-if="item.email"><a href="mailto:{{item.email}}"> <img src="assets/images/service-list5.png" alt="img"> Emial Id </a></li>
+                                        </ul>
+                                        <div class="company-list">
+                                            <p>{{item.description}}</p>
+                                            <!--<p>Lorum Ispum </p><p>Lorum Ispum </p>
+                                            <p>Lorum Ispum </p><p>Lorum Ispum </p>
+                                            <p>Lorum Ispum </p>-->
+                                        </div>
+                                        <div class="hote-details row">
+                                            <div class="col-xs-4 col-sm-4">
+                                                <div class="hotel-hover">
+                                                    <div class="hotel-img" style="background-image: url(assets/images/service-list6.png);"></div>
+                                                    <div class="hotel-review">
+                                                        <div class="review-bg">
+                                                            <div class="review-icon">
+                                                                <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <span>4.8</span>
+                                                            </div>
+                                                            <p>Write Review</p>
+                                                        </div>
+                                                        <div class="more-info"> <a href="#">- More Info -</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-4">
+                                                <div class="hotel-hover">
+                                                    <div class="hotel-img" style="background-image: url(assets/images/service-list7.png);"></div>
+                                                    <div class="hotel-review">
+                                                        <div class="review-bg">
+                                                            <div class="review-icon">
+                                                                <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <span>4.8</span>
+                                                            </div>
+                                                            <p>Write Review</p>
+                                                        </div>
+                                                        <div class="more-info"> <a href="#">- More Info -</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-4">
+                                                <div class="hotel-hover">
+                                                    <div class="hotel-img" style="background-image: url(assets/images/service-list6.png);"></div>
+                                                    <!--<div class="hotel-review">
+                                                        <div class="review-bg">
+                                                            <div class="review-icon">
+                                                                <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                <span>4.8</span>
+                                                            </div>
+                                                            <p>Write Review</p>
+                                                        </div>
+                                                        <div class="more-info"> <a href="#">- More Info -</a> </div>
+                                                    </div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div> <!-- col-6 -->
+                        </div>
+                    </div> <!-- company-grid -->
+                </div> <!-- col-9 -->
+
+                <div class="chat-right col-xs-12 col-sm-3">
+                    <div class="search-box">
+                        <div class="search-title">
+                            <h2>Related Search</h2>
+                        </div>
+                        <div class="search-lists">
+                            <div class="list-select">
+                                <a href="#">Lorum Ipsum</a>  <a href="#">Lorum Is</a>
+                                <a href="#"> Lorum Ipsum Text For All</a>
+                                <a href="#">Lorum</a>  <a href="#">Lorum Ipsum All</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-box">
+                        <div class="search-title">
+                            <h2>Category</h2>
+                        </div>
+                        <div class="search-lists">
+                            <ul class="order-list">
+                                <li ng-repeat="item in categoryList"><a href> {{item.name}} ({{$index + 1}}) </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="search-box">
+                        <div class="search-title">
+                            <h2>Content</h2>
+                        </div>
+                        <div class="search-lists  hidden-default">
+                            <ul class="order-list">
+                                <li><a href="#"> Lorum Ispum Simple </a> </li>
+                                <li><a href="#"> Lorum Ispum </a> </li>
+                                <li><a href="#"> Lorum Ispum Its</a> </li>
+                                <li><a href="#"> Lorum Ispum Simple </a> </li>
+                                <li><a href="#"> Lorum Ispum </a> </li>
+                                <li><a href="#"> Lorum Ispum Its</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="search-play">
+                        <img src="assets/images/service-list10.png" alt="service-list10">
+                    </div>
+
+                </div> <!-- col-sm-3 -->
+            </div>
+        </div>
+    </section>
+</div>
