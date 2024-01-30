@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnePageOnlineUI")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c59254b17cc86b8cb9faddd5070f2be26c0e302d")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnePageOnlineUI.Views")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 

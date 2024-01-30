@@ -1,4 +1,4 @@
-﻿<div ng-controller="flighSearchController">
+﻿<!--<div ng-controller="flighSearchController">-->
 
 
 
@@ -27,9 +27,9 @@
     </section>-->
 
     <!--<section class="dum_inr_bnr"></section>-->
-    <div class="fscontainer">
+    <!--<div class="fscontainer">
        
-    </div>
+    </div>-->
 
     <!--<section class="inner_bnr slide">-->
        <!-- <div class="owl-carousel owl-theme" id="mrkt_plc">-->
@@ -45,35 +45,35 @@
         <!--</div>-->
     <!--</section>-->
 
-    <section class="market_form">
+    <!--<section class="market_form">
         <div class="container">
             <form name="userForm" ng-submit="onSearchClick()">
 
                 <div class="main_market_form">
                     <div class="market_set1">
-                        <div class="left_search">
+                        <div class="left_search">-->
                             <!--<h4>Search Products</h4>-->
 
-                            <input type="text" placeholder="Search Products" name="search" ng-model="searchFormData.searchTerm">
+                            <!--<input type="text" placeholder="Search Products" name="search" ng-model="searchFormData.searchTerm">
 
                         </div>
                     </div>
                     <div class="market_set2">
-                        <div class="inner_main_market">
+                        <div class="inner_main_market">-->
                             <!--<h4>Product Categories</h4>-->
-                            <select class="pro_cate" ng-model="searchFormData.category" ng-options="ug.name for ug in categoryList">
+                            <!--<select class="pro_cate" ng-model="searchFormData.category" ng-options="ug.name for ug in categoryList">
                                 <option value="">Select a category</option>
                             </select>
                         </div>
                     </div>
                     <div class="market_set2">
-                        <div class="inner_main_market">
+                        <div class="inner_main_market">-->
                             <!--<h4 class="dumy-height"> </h4>-->
-                            <div class="button-clear">
+                            <!--<div class="button-clear">
 
                                 <button type="submit" class="search-btn1">Search</button>
                                 <button type="button" class="clear-btn1" ng-click="onClearClick()">Clear</button>
-                            </div>
+                            </div>-->
                             <!-- <h4>Default Sorting</h4>
                             <select class="pro_cate">
                                 <option>Newest First</option>
@@ -81,7 +81,7 @@
                                 <option>Price - Low to High</option>
                                 <option>Price - High to Low</option>
                             </select> -->
-                        </div>
+                        <!--</div>
                     </div>
                 </div>
 
@@ -128,9 +128,9 @@
                         </div>
                         <div class="market_grid_cont">
                             <div class="grid_post_cont">
-                                <h3>{{item.name}}</h3>
+                                <h3>{{item.name}}</h3>-->
                                 <!--<img src="assets/images/mar_rate_star.png">-->
-                                <div class="star_reviewln">
+                                <!--<div class="star_reviewln">
                                     <div class="rate">
                                         <input type="radio" id="star5" name="rate" value="5" />
                                         <label for="star5" title="text">5 stars</label>
@@ -146,8 +146,8 @@
                                 </div>
 
                                 <a href ng-click="onProductClick(item)"><span class="plus_hover"><img src="assets/images/plus_market.png"></span></a>
-                                <div class="mart_rate_cross">
-                                    <!--<del>${{item.sellingPrice}}</del>--><p class="green_rate">${{item.price}}</p>
+                                <div class="mart_rate_cross">-->
+                                    <!--<del>${{item.sellingPrice}}</del>--><!--<p class="green_rate">${{item.price}}</p>
                                 </div>
                             </div>
                             <div class="grid_mart_btn">
@@ -168,5 +168,10 @@
 
         </div>
     </section>
-</div>
+</div>-->
+<div class="fsoutercontainer">
+    <div class="fswidgetsection">
+        <div class="fs-search-container"></div>
 
+    </div>
+</div>

@@ -7,7 +7,9 @@
       "wwwroot/assets/css/login_responsive.css",
       "wwwroot/assets/css/style.css",
       "wwwroot/assets/css/responsive.css",
-      "wwwroot/assets/css/mobile-menu.css"
+      "wwwroot/assets/css/mobile-menu.css",
+      "wwwroot/assets/css/flight_search.css",
+      
     ]
   },
   {
@@ -59,7 +61,8 @@
       "wwwroot/app/upcomingevents/upcomingEventsController.js",
       "wwwroot/app/profile/bookmark/bookmarkListController.js",
       "wwwroot/app/productreviews/productReviewsController.js",
-      "wwwroot/app/profile/reviewlist/reviewListController.js"
+      "wwwroot/app/profile/reviewlist/reviewListController.js",
+      "wwwroot/app/flightSearch/flightSearchController.js"
     ]
   }
 ]

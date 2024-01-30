@@ -64,3 +64,4 @@ C:\Users\Murtaza Arviwala\Downloads\One PageOnline\One PageOnline\web\OnePageOnl
 C:\Users\Murtaza Arviwala\Downloads\One PageOnline\One PageOnline\web\OnePageOnlineUI\obj\Debug\netcoreapp3.1\OnePageOnlineUI.pdb
 C:\Users\Murtaza Arviwala\Downloads\One PageOnline\One PageOnline\web\OnePageOnlineUI\obj\Debug\netcoreapp3.1\OnePageOnlineUI.genruntimeconfig.cache
 C:\Users\Murtaza Arviwala\Downloads\One PageOnline\One PageOnline\web\OnePageOnlineUI\obj\Debug\netcoreapp3.1\Razor\Views\FlightSearch\Index.cshtml.g.cs
+C:\Users\Murtaza Arviwala\Downloads\One PageOnline\One PageOnline\web\OnePageOnlineUI\obj\Debug\netcoreapp3.1\OnePageOnlineUI.sourcelink.json
